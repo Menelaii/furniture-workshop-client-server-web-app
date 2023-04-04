@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h2 class="mb-10">Войдите в аккаунт</h2>
+
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control"
+           id="floatingInput" placeholder="name@example.com" formControlName="username">
+    <label for="floatingInput">Имя пользователя</label>
+  </div>
+
+  <div class="form-floating mb-10">
+    <input type="password" class="form-control"
+           id="floatingPassword" placeholder="Пароль" formControlName="password">
+    <label for="floatingPassword">Пароль</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary"
+          [disabled]="form.invalid || submitted">Войти</button>
+</form>

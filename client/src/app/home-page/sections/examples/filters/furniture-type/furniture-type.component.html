@@ -1,0 +1,4 @@
+<select [(ngModel)]="filtersProvider.filters.furnitureTypeId" class="form-select">
+  <option value="0" selected>Вид мебели</option>
+  <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+</select>

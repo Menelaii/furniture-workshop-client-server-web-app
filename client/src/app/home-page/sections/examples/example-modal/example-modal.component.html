@@ -1,0 +1,38 @@
+<div class="modal fade" id="exampleModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{furniture.title}} {{furniture.price | thousands}} ₽</h5>
+        <button (click)="onclose()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-body__info">
+          <app-carousel [items]="furniture.images"></app-carousel>
+
+          <div class="modal-body__info-text">
+            <div class="modal-body__size-lines">
+              <h2>Габариты</h2>
+              <ng-container *ngIf="furniture.form == 'rectangle'">
+                <p class="modal-body__size-line">Длина: <strong>{{furniture.length}} см</strong></p>
+                <p class="modal-body__size-line">Ширина: <strong>{{furniture.width}} см</strong></p>
+              </ng-container>
+              <ng-container *ngIf="furniture.form == 'round'">
+                <p class="modal-body__size-line">Диаметр: <strong>{{furniture.diameter}} см</strong></p>
+              </ng-container>
+              <p class="modal-body__size-line">Высота: <strong>{{furniture.height}} см</strong></p>
+            </div>
+
+            <div class="modal-body__description">
+              <h2>Описание</h2>
+              <p class="modal-body__description-text">
+                {{furniture.description}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<section *ngIf="!loading; else loader" class="section section-reviews">
+  <h1 *ngIf="!isAuthenticated; else titleWithAddButton"
+      class="section-header section-reviews__h1">Отзывы</h1>
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
+    <div class="carousel-inner">
+      <ng-container *ngIf="!isAuthenticated; else removableTemplates">
+        <ng-container *ngFor="let i of utils.createRange(carouselItemsCount)">
+          <div *ngIf="i != 0; else first" class="carousel-item">
+            <div class="reviews-grid">
+              <ng-container *ngFor="let j of utils.createRange(3)">
+                <app-review-template *ngIf="reviews.length > i * 3 + j"
+                                     [review]="reviews[i * 3 + j]"></app-review-template>
+              </ng-container>
+            </div>
+          </div>
+
+          <ng-template #first>
+            <div class="carousel-item active">
+              <div class="reviews-grid">
+                <ng-container *ngFor="let j of utils.createRange(3)">
+                  <app-review-template *ngIf="reviews.length > i * 3 + j"
+                                       [review]="reviews[i * 3 + j]"></app-review-template>
+                </ng-container>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <div class="section-reviews__carousel-buttons">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+      </button>
+    </div>
+  </div>
+
+  <button class="reviews-grid__button" onclick="window.open('https://www.avito.ru/user/bfa2167dd95eca5718b74b3c22d1c068/profile?page_from=public_profile&review_add_trigger=seller_link&review_page_from=public_profile&src=seller_link#open-reviews-list')"
+  >Посмотреть отзывы на Avito</button>
+</section>
+
+<ng-template #loader>
+  <div class="spinner-border section-reviews" role="status">
+    <span class="visually-hidden">Загрузка...</span>
+  </div>
+</ng-template>
+
+<app-add-review-modal *ngIf="isAuthenticated" (onSubmitted)="fetchReviews()"></app-add-review-modal>
+
+<ng-template #titleWithAddButton>
+  <h1 class="section-header section-reviews__h1">
+    Отзывы<img class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+               data-bs-toggle="modal" data-bs-target="#addReviewModal">
+  </h1>
+</ng-template>
+
+<ng-template #removableTemplates>
+  <ng-container *ngFor="let i of utils.createRange(carouselItemsCount)">
+    <div *ngIf="i != 0; else first" class="carousel-item">
+      <div class="reviews-grid">
+        <ng-container *ngFor="let j of utils.createRange(3)">
+          <app-removable-review-template
+            *ngIf="reviews.length > i * 3 + j"
+            [review]="reviews[i * 3 + j]" (onRemoveButtonClick)="onRemoveButtonClick($event)">
+          </app-removable-review-template>
+        </ng-container>
+      </div>
+    </div>
+
+    <ng-template #first>
+      <div class="carousel-item active">
+        <div class="reviews-grid">
+          <ng-container *ngFor="let j of utils.createRange(3)">
+            <app-removable-review-template
+              *ngIf="reviews.length > i * 3 + j"
+              [review]="reviews[i * 3 + j]" (onRemoveButtonClick)="onRemoveButtonClick($event)">
+            </app-removable-review-template>
+          </ng-container>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</ng-template>

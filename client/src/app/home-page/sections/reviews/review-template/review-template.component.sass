@@ -1,0 +1,55 @@
+@import "src/app/home-page/home-page.component"
+
+.review-template
+  width: 296px
+  min-height: 338px
+  background-color: #F2F2F2
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+  padding: 15px 16px 19px 22px
+  &__content
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    min-height: 236px
+  &__header
+    display: flex
+    flex-direction: row
+    margin-bottom: 14px
+  &__details
+    display: flex
+    flex-direction: column
+  &__profile-icon
+    width: 54px
+    height: 54px
+    margin-right: 12px
+  &__reviewer-name
+    font-family: 'Roboto Medium', monospace
+    font-size: 17px
+    line-height: 21px
+    margin-bottom: 0px
+    color: $color-dark-one
+  &__review-text
+    font-family: 'Roboto Regular', monospace
+    font-size: 16px
+    line-height: 19px
+    color: $color-dark-one
+  &__review-text-a
+    font-family: 'Roboto Regular', monospace
+    font-size: 14px
+    line-height: 19px
+    color: $color-dark-one
+    cursor: pointer
+    text-decoration: none
+  &__published-on
+    display: flex
+    flex-direction: row
+    align-items: center
+    p
+      font-family: 'Roboto Light', monospace
+      font-size: 16px
+      line-height: 19px
+      margin-right: 11px
+.more
+  display: none
+.mb-20
+    margin-bottom: 20px

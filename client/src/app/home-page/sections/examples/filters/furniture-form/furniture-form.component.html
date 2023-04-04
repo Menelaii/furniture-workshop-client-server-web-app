@@ -1,0 +1,27 @@
+<div class="dropdown">
+  <button class="dropdown-toggle dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Форма
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="flexCheckDefault"
+               value="rectangle"
+               (change)="onChange($event)"
+               [checked]="hasForm('rectangle')">
+        <label class="form-check-label" for="flexCheckDefault">
+          Прямоугольная
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="flexCheckChecked"
+               value="round"
+               (change)="onChange($event)"
+               [checked]="hasForm('round')">
+        <label class="form-check-label" for="flexCheckChecked">
+          Круглая
+        </label>
+      </div>
+    </li>
+  </ul>
+</div>

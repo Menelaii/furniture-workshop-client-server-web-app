@@ -1,0 +1,33 @@
+<div class="review-template">
+  <div class="review-template__header">
+    <img src="assets/icons/user-profile.svg" class="review-template__profile-icon">
+    <div class="review-template__details">
+      <p class="review-template__reviewer-name">{{review.reviewer}}</p>
+      <div class="review-template__stars">
+        <img *ngFor="let i of utils.createRange(review.stars)" src="assets/icons/star.svg" class="star">
+      </div>
+    </div>
+  </div>
+
+  <div class="review-template__content">
+    <div class="mb-20" *ngIf="!isShort; else shortReview">
+      <p class="review-template__review-text">
+        {{shortText}}<span [id]="dotsId" >...</span><span [id]="moreTextId" class="more">{{moreText}}</span>
+      </p>
+
+      <a class="review-template__review-text-a"
+         (click)="onReadMoreClick()" [id]="readMoreId">Читать дальше</a>
+    </div>
+
+    <ng-template #shortReview>
+      <p class="review-template__review-text mb-20">
+        {{shortText}}
+      </p>
+    </ng-template>
+
+    <div class="review-template__published-on">
+      <p>Опубликовано на:</p>
+      <img src="assets/icons/avito.svg">
+    </div>
+  </div>
+</div>

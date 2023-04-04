@@ -1,0 +1,24 @@
+<div class="modal fade" id="editModal" tabindex="-1"
+     aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <h2 class="mb-30">Редактировать</h2>
+
+          <div class="form-floating mb-10">
+            <input type="text" class="form-control"
+                   id="floatingInput" [placeholder]="selectedItem.price" formControlName="editedValue">
+            <label for="floatingInput">{{selectedItem.productCode}}</label>
+          </div>
+
+          <button type="submit" [disabled]="form.invalid || submitted"
+                  class="btn btn-primary mr-15">Отправить</button>
+
+          <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">Закрыть</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

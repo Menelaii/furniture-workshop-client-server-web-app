@@ -1,0 +1,36 @@
+<div class="dropdown-center">
+  <button type="button"
+          class="dropdown-toggle dropdown-button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+    Габариты
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <div class="rows-container">
+      <li class="filter-row">
+        <p>Длина:</p>
+        <input [(ngModel)]="filtersProvider.filters.lengthMin" type="number">
+        <p>-</p>
+        <input [(ngModel)]="filtersProvider.filters.lengthMax" class="mr-15" type="number">
+      </li>
+      <li class="filter-row">
+        <p>Ширина:</p>
+        <input [(ngModel)]="filtersProvider.filters.widthMin" type="number">
+        <p>-</p>
+        <input [(ngModel)]="filtersProvider.filters.widthMax" class="mr-15" type="number">
+      </li>
+      <li class="filter-row">
+        <p>Высота:</p>
+        <input [(ngModel)]="filtersProvider.filters.heightMin" type="number">
+        <p>-</p>
+        <input [(ngModel)]="filtersProvider.filters.heightMax" class="mr-15" type="number">
+      </li>
+      <li class="filter-row">
+        <p>Диаметр:</p>
+        <input [(ngModel)]="filtersProvider.filters.diameterMin" type="number">
+        <p>-</p>
+        <input [(ngModel)]="filtersProvider.filters.diameterMax" class="mr-15" type="number">
+      </li>
+    </div>
+  </ul>
+</div>

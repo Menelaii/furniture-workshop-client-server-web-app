@@ -1,0 +1,43 @@
+@import "src/app/home-page/home-page.component"
+@import "src/styles"
+
+.modal-dialog
+  margin: 0 auto
+  min-width: 953px
+.modal-content
+  min-height: 600px
+.modal-header
+  h5
+    font-family: 'Roboto Bold', monospace
+    font-size: 28px
+    line-height: 33px
+    color: $color-orange
+.modal-body
+  padding-top: 12px
+  padding-left: 27px
+  &__info
+    display: flex
+    flex-direction: row
+    app-carousel
+      margin-right: 16.5px
+  h2
+    margin-bottom: 4px
+    font-family: 'Roboto Medium', monospace
+    font-size: 24px
+    line-height: 28px
+    color: $color-dark-one
+  &__size-lines
+    margin-bottom: 14px
+  &__size-line
+    font-family: 'Roboto Light', monospace
+    font-size: 16px
+    line-height: 19px
+    color: $color-dark-one
+    margin-bottom: 0px
+  &__description-text
+    font-family: 'PT Serif Regular', monospace
+    font-size: 16px
+    line-height: 21px
+    color: $color-dark-one
+    min-height: 189px
+    min-width: 526px

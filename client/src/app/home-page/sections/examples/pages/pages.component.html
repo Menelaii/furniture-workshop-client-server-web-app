@@ -1,0 +1,19 @@
+<div class="parent">
+  <p class="pages-out-of">Страница {{selectedButton.page}} / {{totalPages}}</p>
+  <div class="page-buttons">
+    <button class="page-button page-button_previous" (click)="onPreviousButtonClick()">
+      <p><</p>
+    </button>
+
+    <ng-container *ngFor="let button of buttons">
+      <button class="page-button" [ngClass]="{ selected: button.selected }"
+              (click)="onPageButtonClick(button)">
+        <p [ngStyle]="{'color': button.isDisabled ? '#62647342' : '#626473FF' }">{{button.page}}</p>
+      </button>
+    </ng-container>
+
+    <button class="page-button page-button_next" (click)="onNextButtonClick()">
+      <p>></p>
+    </button>
+  </div>
+</div>

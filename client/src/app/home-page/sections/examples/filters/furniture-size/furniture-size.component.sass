@@ -1,0 +1,52 @@
+@import "src/app/home-page/home-page.component"
+@import "src/styles"
+
+.dropdown-button
+  background-color: $color-background
+  color: $color-dark-two
+  border: 0
+
+.dropdown-menu-end
+  background: $color-background
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+  padding: 14px 14px 14px 14px
+.rows-container
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+.filter-row
+  display: flex
+  flex-direction: row
+  align-items: flex-end
+  margin-bottom: 10px
+  p
+    margin-right: 10px
+    margin-bottom: 0px
+    font-family: 'Roboto Regular', monospace
+    font-size: 16px
+    line-height: 23px
+    color: $color-dark-two
+
+input
+  width: 93px
+  height: 29px
+  outline: 0
+  border-width: 0 0 1px
+  border-color: $color-dark-two
+  margin-right: 10px
+  background-color: $color-background
+  font-family: 'Roboto Medium', monospace
+  font-size: 16px
+  line-height: 23px
+  color: $color-dark-two
+  &:focus
+    border: 0
+    outline: 2px orange solid
+
+.mr-15
+  margin-right: 15px
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+input[type=number]
+  -moz-appearance:textfield

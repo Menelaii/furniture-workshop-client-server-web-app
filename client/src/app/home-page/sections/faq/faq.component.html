@@ -1,0 +1,500 @@
+<section *ngIf="!loading; else loader1" class="section">
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingFurnitureLinks">
+        <button class="accordion-button collapsed"
+                type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-furnitureLinks"
+                aria-expanded="false" aria-controls="panelsStayOpen-furnitureLinks">
+          Какую мебель мы производим
+        </button>
+      </h2>
+
+      <div id="panelsStayOpen-furnitureLinks"
+           class="accordion-collapse collapse"
+           aria-labelledby="panelsStayOpen-headingFurnitureLinks">
+
+        <div class="accordion-body furniture-links">
+          <ul>
+            <li>
+              <a href="#examples" (click)="filtersProvider.filters.furnitureTypeId=1">Обеденные столы</a>
+            </li>
+            <li>
+              <a href="#examples" (click)="filtersProvider.filters.furnitureTypeId=2">Барные столы</a>
+            </li>
+            <li>
+              <a href="#examples" (click)="filtersProvider.filters.furnitureTypeId=3">Столешницы</a>
+            </li>
+            <li>
+              <a href="#examples" (click)="filtersProvider.filters.furnitureTypeId=4">Тумбы</a>
+            </li>
+            <li>
+              <a href="#examples" (click)="filtersProvider.filters.furnitureTypeId=5">Прикроватные столики</a>
+            </li>
+            <li>
+              <a href="#examples" (click)="filtersProvider.filters.furnitureTypeId=6">Журнальные столики</a>
+            </li>
+            <li>
+              <a href="#examples" (click)="filtersProvider.filters.furnitureTypeId=7">Консоли</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            Какие материалы мы используем
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingTwo">
+          <div class="accordion-body">
+            <h3>Столешница</h3>
+            <p class="mb-11">состоит из износоустойчивого керамогранита толщиной 9-11мм (не керамика)
+              и подложки из мдф 16мм прочно склеенных между собой.
+              Подстолье к столешнице прикручивается мебельными винтами.</p>
+
+            <h3>Подстолье</h3>
+            <ul>
+              <li>
+                <p>металлическое с порошковой покраской в печи и регулировкой ножек по высоте (не разборное).
+                  Покрасить возможно: в черный, белый, серый, бежевый, золото, хром...
+                  Возможно изготовление деревянного подстолья. (в т.ч. классика барокко) </p>
+              </li>
+              <li>
+                <p>из массива (сосна, бук)</p>
+              </li>
+              <li>
+                <p>отделанное камнем (искусственным или натуральным)</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="accordion-item">
+
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            Подбор плиты керамогранита
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-collapseThree"
+             class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingThree">
+
+          <div class="accordion-body plate">
+            <ul>
+              <li>
+                <p>
+                  выбрать плиту у нас в наличии (дешевле и меньше срок изготовления);
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  сообщить какой цвет нужен, глянцевый или матовый – поищем и предложим варианты;
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  выбрать на сайтах <a href="https://samara.leroymerlin.ru/" target="_blank">samara.leroymerlin.ru</a>,
+                  <a href="https://smr.estima.ru/" target="_blank">smr.estima.ru</a>,
+                  <a href="https://agaudi.ru/" target="_blank">agaudi.ru</a>,
+                  <a href="https://volga.kerama-marazzi.ru/" target="_blank">volga.kerama-marazzi.ru</a>
+                  или уточнить наличие в Самаре и сообщить нам название плиты;
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  самостоятельно в магазинах керамогранита Самары (покупаете и привозите нам).
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header" id="panelsStayOpen-headingCornerFormat">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-cornerFormat"
+                  aria-expanded="false" aria-controls="panelsStayOpen-cornerFormat">
+            Варианты оформления края столешницы
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-cornerFormat"
+             class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingCornerFormat">
+
+          <div class="accordion-body">
+
+            <ul>
+              <li>
+                <p>
+                  Открытый отшлифованный край
+                  керамогранита на фигурной подложке из мдф (самый дешевый и модный вариант);
+                </p>
+              </li>
+
+              <li *ngIf="!isAuthenticated;else cornerPricesWithEditButtons">
+                <p>
+                  Край керамогранита закрыт
+                  тонким древесным слоем 3 мм сливающимся с подложкой – защищает от микросколов
+                  при ударе (удорожание на {{closedCornerMin}}-{{closedCornerMax}} т.р. в зависимости от размера).
+                  Это наша уникальная технология, имеем исключительное право на данную разработку;
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Деревянные бортики по бокам плиты керамогранита – добавляют ширину стола,
+                  закрывают край керамогранита по длине плиты (стоимость рассчитывается индивидуально).
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Деревянный обклад вокруг плиты керамогранита
+                  – камень лежит в обьятиях дерева,
+                  что радикально повышает прочность (самый дорогой вариант, самый большой срок изготовления).
+                </p>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header" id="panelsStayOpen-headingDelivery">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-delivery"
+                  aria-expanded="false" aria-controls="panelsStayOpen-delivery">
+            Доставка
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-delivery"
+             class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingDelivery">
+
+          <div class="accordion-body">
+            <h3>Если вы из Самарской области</h3>
+            <p class="mb-11">самовывоз из мастерской (находимся в Смышляевке).
+              Возможна доставка по договоренности за доп.плату.</p>
+
+            <h3>Если вы из другого города</h3>
+            <p>отправляем трансп.компаниями: ПЭК или Деловые линии. Страхуем.
+              Стоимость доставки можете рассчитать на сайтах этих ТК (напишем вес и объем примерный).
+              Отправляем и высылаем вам накладную для отслеживания груза.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header" id="panelsStayOpen-headingPrice">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-price"
+                  aria-expanded="false" aria-controls="panelsStayOpen-price">
+            Цена
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-price"
+             class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingPrice">
+
+          <div class="accordion-body price">
+            <ul class="mb-42" *ngIf="!isAuthenticated;else pricesWithEditButtons">
+              <li>
+                <p><strong>Консоли</strong> – от {{consoles | thousands}} ₽</p>
+              </li>
+              <li>
+                <p><strong>Тумбы</strong> – от {{pedestals | thousands}} ₽</p>
+              </li>
+              <li>
+                <p><strong>Журнальный столик</strong> – от {{coffeeTables | thousands}} ₽</p>
+              </li>
+              <li>
+                <p><strong>Прикроватный</strong> – от {{bedsideTables | thousands}} ₽</p>
+              </li>
+
+              <li>
+                <p><strong>Обеденные столы:</strong></p>
+                <ul>
+                  <li class="pt-20">
+                    <p><strong>Прямоугольные</strong></p>
+                    <ul>
+                      <li>
+                        <p>120х60 см – от {{rectangularDiningTables120x60 | thousands}} ₽;</p>
+                      </li>
+                      <li>
+                        <p>150х75 см – от {{rectangularDiningTables150x75 | thousands}} ₽;</p>
+                      </li>
+                      <li>
+                        <p>160х80 см – от {{rectangularDiningTables160x80 | thousands}} ₽;</p>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li style="margin-bottom: 20px">
+                    <p><strong>Круглые</strong></p>
+                    <ul>
+                      <li>
+                        <p>диаметр 80 см – от {{roundDiningTablesDiameter80 | thousands}} ₽;</p>
+                      </li>
+                      <li>
+                        <p>диаметр 100 см – от {{roundDiningTablesDiameter100 | thousands}} ₽;</p>
+                      </li>
+                      <li>
+                        <p>диаметр 110-120 см – от {{roundDiningTablesDiameter110_120 | thousands}} ₽ (состоит из двух плит);</p>
+                      </li>
+                      <li>
+                        <p>диаметр от 130-150 см – от {{roundDiningTablesDiameter130_150 | thousands}} ₽ (состоит из двух плит);</p>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                <p>Покраска подстолья в <strong>золото</strong> и <strong>хром</strong> дороже
+                  на {{paintingInGoldOrChrome}} ₽</p>
+              </li>
+            </ul>
+
+            <p><strong>Цена зависит от размера, формы,
+              вида подстолья и обработки края столешницы.
+              Напишите какой стол вам нужен – посчитаем цену точнее.</strong></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header" id="panelsStayOpen-headingUnderframe">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-underframe"
+                  aria-expanded="false" aria-controls="panelsStayOpen-underframe">
+            Выбор подстолья
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-underframe"
+             class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingUnderframe">
+
+          <div class="accordion-body">
+            <h3>Форма</h3>
+            <p class="mb-11">
+              выбрать форму подстолья можно из представленных на фото в секции
+              <a class="light" href="#examples">наши работы</a>.
+              Возможно небольшое изменение формы или изготовление другой по договорённости.
+            </p>
+
+            <h3>Цвет</h3>
+            <p>можно покрасить в чёрный, серый, белый, бежевый, золото, хром.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header" id="panelsStayOpen-headingToDo">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-toDo"
+                  aria-expanded="false" aria-controls="panelsStayOpen-toDo">
+            Как сделать заказ
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-toDo"
+             class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingToDo">
+
+          <div class="accordion-body">
+            <h3>Если вы из Самарской области</h3>
+            <ul class="mb-42">
+              <li>
+                <p>можете приехать в мастерскую (находимся в Смышляевке)
+                  – посмотреть образцы и
+                  сделать заказ оплатив аванс 50% на карту самозанятому
+                  мастеру (получите чек). Оставшиеся 50% – оплачиваете при получении заказа.</p>
+              </li>
+
+              <li>
+                <p>
+                  <strong>если хотите сделать заказ удалённо</strong>
+                  – перечисляете аванс 50% на карту самозанятому мастеру
+                  (получите чек) – начинаем делать. Оставшиеся 50% – оплачиваете при получении заказа.
+                </p>
+              </li>
+            </ul>
+
+            <h3>Если вы из другого города</h3>
+            <ul>
+              <li>
+                <p>
+                  Перечисляете 50% на карту самозанятому мастеру (получите чек) – начинаем делать.
+                  Как будет готов – сообщаю и высылаю фото. Оплачиваете оставшиеся 50%
+                  за заказ на карту мастеру (получите чек).
+                  Пишите реквизиты куда отправлять, ФИО, телефон и эл. почту получателя.
+                  Отправляем и высылаем вам накладную для отслеживания груза.
+                  За доставку оплачиваете ПЭКу или ДЛ при получении.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #loader1>
+  <div class="spinner-border section" role="status">
+    <span class="visually-hidden">Загрузка...</span>
+  </div>
+</ng-template>
+
+<app-editor-modal *ngIf="isAuthenticated" [selectedItem]="selectedItem"
+(onSubmitted)="fetchPrices()"></app-editor-modal>
+
+<ng-template #pricesWithEditButtons>
+  <ul class="mb-42">
+    <li>
+      <p><strong>Консоли</strong> – от {{consoles | thousands}} ₽</p>
+      <img (click)="onEditButtonClick('консоль')"
+           class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+           data-bs-toggle="modal" data-bs-target="#editModal">
+    </li>
+    <li>
+      <p><strong>Тумбы</strong> – от {{pedestals | thousands}} ₽</p>
+      <img (click)="onEditButtonClick('тумба')"
+           class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+           data-bs-toggle="modal" data-bs-target="#editModal">
+    </li>
+    <li>
+      <p><strong>Журнальный столик</strong> – от {{coffeeTables | thousands}} ₽</p>
+      <img (click)="onEditButtonClick('журнальный_столик')"
+           class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+           data-bs-toggle="modal" data-bs-target="#editModal">
+    </li>
+    <li>
+      <p><strong>Прикроватный</strong> – от {{bedsideTables | thousands}} ₽</p>
+      <img (click)="onEditButtonClick('прикроватный_столик')"
+           class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+           data-bs-toggle="modal" data-bs-target="#editModal">
+    </li>
+
+    <li>
+      <p><strong>Обеденные столы:</strong></p>
+      <ul>
+        <li class="pt-20">
+          <p><strong>Прямоугольные</strong></p>
+          <ul>
+            <li>
+              <p>120х60 см – от {{rectangularDiningTables120x60 | thousands}} ₽;</p>
+              <img (click)="onEditButtonClick('обеденный_прямоугольный_стол120x60')"
+                   class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                   data-bs-toggle="modal" data-bs-target="#editModal">
+            </li>
+            <li>
+              <p>150х75 см – от {{rectangularDiningTables150x75 | thousands}} ₽;</p>
+              <img (click)="onEditButtonClick('обеденный_прямоугольный_стол150x75')"
+                   class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                   data-bs-toggle="modal" data-bs-target="#editModal">
+            </li>
+            <li>
+              <p>160х80 см – от {{rectangularDiningTables160x80 | thousands}} ₽;</p>
+              <img (click)="onEditButtonClick('обеденный_прямоугольный_стол160x80')"
+                   class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                   data-bs-toggle="modal" data-bs-target="#editModal">
+            </li>
+          </ul>
+        </li>
+
+        <li style="margin-bottom: 20px">
+          <p><strong>Круглые</strong></p>
+          <ul>
+            <li>
+              <p>диаметр 80 см – от {{roundDiningTablesDiameter80 | thousands}} ₽;</p>
+              <img (click)="onEditButtonClick('обеденный_круглый_стол_диаметр80')"
+                   class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                   data-bs-toggle="modal" data-bs-target="#editModal">
+            </li>
+            <li>
+              <p>диаметр 100 см – от {{roundDiningTablesDiameter100 | thousands}} ₽;</p>
+              <img (click)="onEditButtonClick('обеденный_круглый_стол_диаметр100')"
+                   class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                   data-bs-toggle="modal" data-bs-target="#editModal">
+            </li>
+            <li>
+              <p>диаметр 110-120 см – от {{roundDiningTablesDiameter110_120 | thousands}} ₽ (состоит из двух плит);</p>
+              <img (click)="onEditButtonClick('обеденный_круглый_стол_диаметр110_120')"
+                   class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                   data-bs-toggle="modal" data-bs-target="#editModal">
+            </li>
+            <li>
+              <p>диаметр от 130-150 см – от {{roundDiningTablesDiameter130_150 | thousands}} ₽ (состоит из двух плит);</p>
+              <img (click)="onEditButtonClick('обеденный_круглый_стол_диаметр130_150')"
+                   class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                   data-bs-toggle="modal" data-bs-target="#editModal">
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <p>Покраска подстолья в <strong>золото</strong> и <strong>хром</strong> дороже
+        на {{paintingInGoldOrChrome}} ₽</p>
+      <img (click)="onEditButtonClick('покраска_золото_хром')"
+           class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+           data-bs-toggle="modal" data-bs-target="#editModal">
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #cornerPricesWithEditButtons>
+  <li>
+    <p>
+      Край керамогранита закрыт
+      тонким древесным слоем 3 мм сливающимся с подложкой – защищает от микросколов
+      при ударе (удорожание на {{closedCornerMin}}<img (click)="onEditButtonClick('закрытый_край_минимум')"
+                                                       class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                                                       data-bs-toggle="modal" data-bs-target="#editModal">
+      -{{closedCornerMax}}<img (click)="onEditButtonClick('закрытый_край_максимум')"
+                               class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+                               data-bs-toggle="modal" data-bs-target="#editModal"> т.р. в зависимости от размера).
+      Это наша уникальная технология, имеем исключительное право на данную разработку;
+    </p>
+  </li>
+</ng-template>

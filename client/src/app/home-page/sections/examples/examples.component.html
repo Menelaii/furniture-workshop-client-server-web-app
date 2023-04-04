@@ -1,0 +1,24 @@
+<section class="section">
+  <div class="filters">
+    <app-filters></app-filters>
+  </div>
+
+  <ng-container *ngIf="!loading; else loader">
+    <app-examples-grid [furniture]="furniture"
+                       (onClick)="onTemplateClick($event)"></app-examples-grid>
+
+    <app-pages [currentPage]="currentPage"
+               [totalPages]="totalPages"
+               (onPageClick)="onPageButtonClick($event)"></app-pages>
+  </ng-container>
+
+  <ng-template #loader>
+    <div class="spinner-container">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Загрузка...</span>
+      </div>
+    </div>
+  </ng-template>
+</section>
+
+<app-example-modal [furniture]="selected"></app-example-modal>

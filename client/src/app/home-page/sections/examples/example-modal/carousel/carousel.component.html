@@ -1,0 +1,37 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-interval="false">
+  <div class="carousel-inner">
+
+    <ng-container *ngFor="let item of items">
+      <div class="carousel-item"
+           [class.active]="item.isThumbnail === 'true'"
+      >
+        <img [src]="item.link" class="d-block w-100" alt="...">
+      </div>
+    </ng-container>
+
+    <button (click)="onPreviousButtonClick()" class="carousel-control-prev" type="button"
+            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Предыдущий</span>
+    </button>
+    <button (click)="onNextButtonClick()" class="carousel-control-next" type="button"
+            data-bs-target="#carouselExampleIndicators" data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Следующий</span>
+    </button>
+  </div>
+
+  <div class="indicators">
+    <ng-container *ngFor="let item of items; let i = index">
+      <img type="button" data-bs-target="#carouselExampleIndicators"
+              attr.data-bs-slide-to="{{i}}"
+              src="{{item.link}}" alt="img..."
+              (click)="indexProvider.selectedIndex = i"
+              aria-current="true"
+      />
+    </ng-container>
+  </div>
+</div>
+<!--              [class.active]="indexProvider.selectedIndex == i"-->

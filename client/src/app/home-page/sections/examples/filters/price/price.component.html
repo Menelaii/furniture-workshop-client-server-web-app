@@ -1,0 +1,15 @@
+<div class="dropdown-center">
+  <button type="button"
+          class="dropdown-toggle dropdown-button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+    Цена
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li class="filter-row">
+      <input [(ngModel)]="filtersProvider.filters.priceMin" type="number">
+      <p>-</p>
+      <input [(ngModel)]="filtersProvider.filters.priceMax" class="mr-15" type="number">
+    </li>
+  </ul>
+</div>
