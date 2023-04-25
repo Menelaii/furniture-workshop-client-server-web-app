@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import {FiltersProviderService} from "../../filters-provider.service";
-
-interface FurnitureType {
-  id: number
-  name: string
-}
+import {FurnitureTypeService} from "../../../../../shared/services/furniture-type.service";
+import {FurnitureType} from "../../../../../shared/interfaces/furniture-type";
 
 @Component({
   selector: 'app-furniture-type',
@@ -12,17 +9,10 @@ interface FurnitureType {
   styleUrls: ['./furniture-type.component.sass']
 })
 export class FurnitureTypeComponent {
-  //todo подгрузка энамов
-  types: FurnitureType[] = [
-    {id:1, name: 'Обеденные столы'},
-    {id:2, name: 'Барные столы'},
-    {id:3, name: 'Столешницы'},
-    {id:4, name: 'Тумбы'},
-    {id:5, name: 'Прикроватные столики'},
-    {id:6, name: 'Журнальные столики'},
-    {id:7, name: 'Консоли'}
-  ]
+  types: FurnitureType[]
 
-   constructor(public filtersProvider: FiltersProviderService) {
+   constructor(private furnitureTypeService: FurnitureTypeService,
+               public filtersProvider: FiltersProviderService) {
+    this.types = furnitureTypeService.getTypes()
    }
 }

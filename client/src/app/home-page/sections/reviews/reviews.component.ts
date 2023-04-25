@@ -38,7 +38,6 @@ export class ReviewsComponent implements OnInit {
 
   onRemoveButtonClick(id: number) {
     this.service.delete(id).subscribe(r => {
-      console.log(r)
       this.fetchReviews()
     })
   }

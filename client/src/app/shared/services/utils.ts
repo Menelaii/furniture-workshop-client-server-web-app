@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Furniture} from "../interfaces/furniture";
+import {FurnitureRich} from "../interfaces/furnitureRich";
 
 @Injectable()
 export class Utils {
@@ -11,8 +11,9 @@ export class Utils {
     return array
   }
 
-  public getMock():Furniture {
+  public getMock():FurnitureRich {
     return {
+      id: 0,
       title: "Стол прямоугольный Заглушка",
       description: "",
       form: "Прямоугольный",

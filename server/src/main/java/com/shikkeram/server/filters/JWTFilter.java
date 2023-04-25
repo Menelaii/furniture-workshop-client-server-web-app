@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -26,27 +27,27 @@ public class JWTFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("filter enter");
-        System.out.println(request.getMethod());
-        System.out.println(request.getRequestURI());
-        System.out.println(request.getHeader("Authorization"));
-
         String authHeader = request.getHeader("Authorization");
 
-        if (authHeader == null) {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "INVALID_TOKEN");
-        } else {
+        if (authHeader != null) {
             String token = authHeader.substring(7);
-            String username = jwtUtil.validateTokenAndRetrieveClaim(token);
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            Optional<String> username = jwtUtil.validateTokenAndRetrieveClaim(token);
 
-            UsernamePasswordAuthenticationToken authenticationToken =
-                    new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(),
-                            userDetails.getAuthorities());
+            if (username.isEmpty()) {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "INVALID_TOKEN");
+            } else {
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username.get());
 
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                UsernamePasswordAuthenticationToken authenticationToken =
+                        new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(),
+                                userDetails.getAuthorities());
 
-            filterChain.doFilter(request, response);
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+                filterChain.doFilter(request, response);
+            }
+        } else {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "TOKEN_NOT_FOUND");
         }
     }
 

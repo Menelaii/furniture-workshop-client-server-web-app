@@ -21,7 +21,7 @@ export class Filters {
 
   constructor() {
     this._furnitureTypeId = 0
-    this._forms = new Set<string>(['rectangle', 'round'])
+    this._forms = new Set<string>(['Круглая', 'Прямоугольная', 'Овальная'])//todo get from service
     this._priceMax = undefined
     this._priceMin= undefined
     this._lengthMin= undefined
@@ -151,7 +151,7 @@ export class Filters {
 
   setDefaults() {
     this._furnitureTypeId = 0
-    this._forms = new Set<string>(['rectangle', 'round'])
+    this._forms = new Set<string>(['Круглая', 'Прямоугольная', 'Овальная'])//todo get from service
     this._priceMax = undefined
     this._priceMin= undefined
     this._lengthMin= undefined

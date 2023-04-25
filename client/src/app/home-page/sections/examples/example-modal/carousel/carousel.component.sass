@@ -11,11 +11,15 @@
     transform: translate(0px, -50%)
     height: 30px
     width: 30px
-.carousel-item
-  background-color: $color-dark-one
-  min-width: 365.5px
-  min-height: 274.13px
+//.carousel-item
+//  min-width: 365.5px
+//  min-height: 274.13px
+//  carousel-
 .indicators
+  display: grid
+  grid-template-columns: repeat(6, 74.78px)
+  grid-row-gap: 10px
+  grid-column-gap: 10px
   .active
     border: 1px solid $color-orange
   img
@@ -23,8 +27,3 @@
     height: 45.61px
     min-width: 74.78px
     min-height: 45.61px
-    background: #D9D9D9
-    margin-right: 4px
-    outline: 1px solid $color-dark-one
-    &:last-child
-      margin-right: 0px

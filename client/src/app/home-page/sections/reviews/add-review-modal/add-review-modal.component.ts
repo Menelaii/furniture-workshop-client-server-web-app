@@ -15,8 +15,15 @@ export class AddReviewModalComponent {
   constructor(private service: ReviewsService) {
     this.form = new FormGroup({
       reviewer: new FormControl(null, [Validators.required]),
-      stars: new FormControl(null, [Validators.required]),
-      text: new FormControl(null, [Validators.required])
+      stars: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(5)
+      ]),
+      text: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(800)
+      ])
     })
   }
 
@@ -33,11 +40,31 @@ export class AddReviewModalComponent {
       stars: this.form.value.stars
     }
 
-    this.service.post(newReview).subscribe(r => {
-      this.form.reset()
-      this.submitted = false
-      this.onSubmitted.emit()
-      console.log('response ' + r)
+    const postObserver = {
+      parentEl: this,
+
+      next(value: any) {
+        this.parentEl.onSuccessfullySubmitted()
+      },
+      error(value: any) {
+        this.parentEl.resetForm()
+      }
+    }
+
+      this.service.post(newReview).subscribe(postObserver)
+  }
+
+  onSuccessfullySubmitted() {
+    this.resetForm()
+    this.onSubmitted.emit()
+  }
+
+  resetForm() {
+    this.submitted = false
+    this.form.reset()
+    this.form.patchValue({
+      furnitureType: 0,
+      form: 0
     })
   }
 }

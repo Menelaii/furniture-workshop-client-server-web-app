@@ -14,7 +14,7 @@ import { AboutComponent } from './home-page/sections/about/about.component';
 import { ReviewTemplateComponent } from './home-page/sections/reviews/review-template/review-template.component';
 import { FaqComponent } from './home-page/sections/faq/faq.component';
 import { ExamplesComponent } from './home-page/sections/examples/examples.component';
-import { ExampleTemplateComponent } from './home-page/sections/examples/example-template/example-template.component';
+import { ExampleTemplateComponent } from './home-page/sections/examples/examples-grid/example-template/example-template.component';
 import { PagesComponent } from './home-page/sections/examples/pages/pages.component';
 import { ExampleModalComponent } from './home-page/sections/examples/example-modal/example-modal.component';
 import { FiltersComponent } from './home-page/sections/examples/filters/filters.component';
@@ -29,6 +29,8 @@ import { EditorModalComponent } from './home-page/sections/faq/editor-modal/edit
 import {AddReviewModalComponent} from "./home-page/sections/reviews/add-review-modal/add-review-modal.component";
 import { RemovableReviewTemplateComponent } from './home-page/sections/reviews/removable-review-template/removable-review-template.component';
 import {LoginPageComponent} from "./login-page/login-page.component";
+import { AddFurnitureFormComponent } from './home-page/sections/examples/add-furniture-form/add-furniture-form.component';
+import {AuthGuard} from "./shared/services/auth.guard";
 
 @NgModule({
     declarations: [
@@ -58,16 +60,17 @@ import {LoginPageComponent} from "./login-page/login-page.component";
         AddReviewModalComponent,
         AddReviewModalComponent,
         RemovableReviewTemplateComponent,
-        LoginPageComponent
+        LoginPageComponent,
+        AddFurnitureFormComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         SharedModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
-  providers: [ReviewsComponent],
+  providers: [ReviewsComponent, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

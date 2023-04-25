@@ -1,11 +1,23 @@
 <section class="section">
+  <ng-container>
+    <button *ngIf="isAuthenticated"
+            class="add-button"
+            data-bs-toggle="modal"
+            data-bs-target="#addFurnitureForm"
+    >Добавить мебель</button>
+    <app-add-furniture-form
+      (onSubmitted)="fetchExamples()"
+    ></app-add-furniture-form>
+  </ng-container>
+
   <div class="filters">
     <app-filters></app-filters>
   </div>
 
   <ng-container *ngIf="!loading; else loader">
     <app-examples-grid [furniture]="furniture"
-                       (onClick)="onTemplateClick($event)"></app-examples-grid>
+                       (onClick)="onTemplateClick($event)"
+    ></app-examples-grid>
 
     <app-pages [currentPage]="currentPage"
                [totalPages]="totalPages"
@@ -21,4 +33,6 @@
   </ng-template>
 </section>
 
-<app-example-modal [furniture]="selected"></app-example-modal>
+<app-example-modal [furniture]="selected"
+(onRemoveClick)="onRemoveButtonClick($event)"
+></app-example-modal>

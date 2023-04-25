@@ -2,10 +2,13 @@
      aria-labelledby="addReviewModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Добавить отзыв</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+
       <div class="modal-body">
         <form [formGroup]="form" (ngSubmit)="submit()">
-          <h2 class="mb-30">Добавить</h2>
-
           <div class="form-floating mb-10">
             <input type="text" class="form-control"
                    id="floatingInputReviewer" placeholder="Иван К." formControlName="reviewer">
@@ -25,10 +28,7 @@
           </div>
 
           <button type="submit" [disabled]="form.invalid || submitted"
-                  class="btn btn-primary mr-15">Отправить</button>
-
-          <button type="button" class="btn btn-secondary"
-                  data-bs-dismiss="modal">Закрыть</button>
+                  class="btn btn-primary">Отправить</button>
         </form>
       </div>
     </div>

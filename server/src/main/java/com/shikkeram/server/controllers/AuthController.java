@@ -44,7 +44,7 @@ public class AuthController {
         try {
             authenticationManager.authenticate(authenticationToken);
         } catch (BadCredentialsException e) {
-            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
 
         String token = jwtUtil.generateToken(authDTO.getUsername(), tokenExpiresIn);

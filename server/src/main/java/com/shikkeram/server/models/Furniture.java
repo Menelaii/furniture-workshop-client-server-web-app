@@ -26,6 +26,16 @@ public class Furniture extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "furniture_type_id", referencedColumnName = "id")
     private FurnitureType furnitureType;
-    @OneToMany(mappedBy = "furniture")
+    @OneToMany(mappedBy = "furniture",
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE}
+    )
     private List<Image> images;
+
+    public void removeImagesIfExists() {
+        if (images != null) {
+            images.forEach(i -> i.setFurniture(null));
+            images.clear();
+        }
+    }
 }

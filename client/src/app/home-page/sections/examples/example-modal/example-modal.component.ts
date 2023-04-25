@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {Furniture} from "../../../../shared/interfaces/furniture";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FurnitureRich} from "../../../../shared/interfaces/furnitureRich";
 import {Utils} from "../../../../shared/services/utils";
-import {ModalSelectedIndexProviderService} from "../modal-selected-index-provider.service";
+import {AuthService} from "../../../../shared/services/auth.service";
 
 @Component({
   selector: 'app-example-modal',
@@ -9,14 +9,17 @@ import {ModalSelectedIndexProviderService} from "../modal-selected-index-provide
   styleUrls: ['./example-modal.component.sass']
 })
 export class ExampleModalComponent {
-  @Input() furniture: Furniture = this.utils.getMock()
+  @Input() furniture: FurnitureRich = this.utils.getMock()
+  @Output() onRemoveClick: EventEmitter<number> = new EventEmitter<number>()
 
-  private _hidden: boolean = true
+  isAuthenticated = false
 
-  constructor(private utils: Utils, public indexProvider: ModalSelectedIndexProviderService) {
+  constructor(private utils: Utils,
+              private authService: AuthService) {
+    this.isAuthenticated = authService.isAuthenticated()
   }
 
-  onclose() {
-    this.indexProvider.selectedIndex = 0
+  onRemoveBtnClick() {
+    this.onRemoveClick.emit(this.furniture.id)
   }
 }

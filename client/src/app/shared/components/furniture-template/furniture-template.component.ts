@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Furniture} from "../../interfaces/furniture";
+import {FurnitureRich} from "../../interfaces/furnitureRich";
 import {Utils} from "../../services/utils";
 
 @Component({
@@ -8,7 +8,7 @@ import {Utils} from "../../services/utils";
   styleUrls: ['./furniture-template.component.sass']
 })
 export class FurnitureTemplateComponent {
-  @Input() furniture: Furniture = this.utils.getMock()
+  @Input() furniture: FurnitureRich = this.utils.getMock()
 
   constructor(private utils:Utils) {
   }

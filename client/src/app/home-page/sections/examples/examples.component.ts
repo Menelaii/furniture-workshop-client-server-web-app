@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Furniture} from "../../../shared/interfaces/furniture";
+import {FurnitureRich} from "../../../shared/interfaces/furnitureRich";
 import {FurnitureService} from "../../../shared/services/furniture.service";
 import {Utils} from "../../../shared/services/utils";
 import {Filters} from "./filters/filters";
 import {FiltersProviderService} from "./filters-provider.service";
 import {Subscription} from "rxjs";
-
+import {AuthService} from "../../../shared/services/auth.service";
 
 @Component({
   selector: 'app-examples',
@@ -13,17 +13,21 @@ import {Subscription} from "rxjs";
   styleUrls: ['./examples.component.sass']
 })
 export class ExamplesComponent implements OnInit, OnDestroy {
-  furniture: Furniture[] = []
+  furniture: FurnitureRich[] = []
   loading = false
   totalPages = 1
   currentPage = 1
-  selected: Furniture = this.utils.getMock()
+  selected: FurnitureRich = this.utils.getMock()
   timeout:NodeJS.Timeout | undefined
   subscription: Subscription
+  isAuthenticated = false
 
   constructor(private service: FurnitureService,
               private utils: Utils,
-              private filtersProvider: FiltersProviderService) {
+              private filtersProvider: FiltersProviderService,
+              private authService: AuthService) {
+    this.isAuthenticated = authService.isAuthenticated()
+
     this.subscription = this.filtersProvider.filters
       .onChanged.subscribe((value => {
         if (this.timeout != null) {
@@ -36,14 +40,14 @@ export class ExamplesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.fetchExamples(this.filtersProvider.filters, this.currentPage)
+    this.fetchExamples(this.currentPage)
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
 
-  fetchExamples(filters:Filters, page:number = 1) {
+  fetchExamples(page:number = 1, filters:Filters = this.filtersProvider.filters) {
     --page
     this.loading = true
     this.service.getAll(filters, page).subscribe(
@@ -56,15 +60,21 @@ export class ExamplesComponent implements OnInit, OnDestroy {
 
   onPageButtonClick(page: number) {
     this.currentPage = page
-    this.fetchExamples(this.filtersProvider.filters, this.currentPage)
+    this.fetchExamples(this.currentPage)
   }
 
-  onTemplateClick(furniture: Furniture) {
+  onTemplateClick(furniture: FurnitureRich) {
     this.selected = furniture
   }
 
   onFiltersChanged(filters: Filters) {
     this.currentPage = 1
-    this.fetchExamples(filters)
+    this.fetchExamples(this.currentPage, filters)
+  }
+
+  onRemoveButtonClick(id: number) {
+    this.service.delete(id).subscribe(r => {
+      this.fetchExamples(this.currentPage)
+    })
   }
 }

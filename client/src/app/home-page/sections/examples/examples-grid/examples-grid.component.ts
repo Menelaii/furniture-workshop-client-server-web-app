@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Furniture} from "../../../../shared/interfaces/furniture";
+import {FurnitureRich} from "../../../../shared/interfaces/furnitureRich";
 
 @Component({
   selector: 'app-examples-grid',
@@ -7,10 +7,10 @@ import {Furniture} from "../../../../shared/interfaces/furniture";
   styleUrls: ['./examples-grid.component.sass']
 })
 export class ExamplesGridComponent {
-  @Input() furniture: Furniture[] = []
-  @Output() onClick: EventEmitter<Furniture> = new EventEmitter<Furniture>()
+  @Input() furniture: FurnitureRich[] = []
+  @Output() onClick: EventEmitter<FurnitureRich> = new EventEmitter<FurnitureRich>()
 
-  onElementClick(furniture: Furniture) {
+  onElementClick(furniture: FurnitureRich) {
     this.onClick.emit(furniture)
   }
 }

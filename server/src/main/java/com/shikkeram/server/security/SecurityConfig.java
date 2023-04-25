@@ -3,7 +3,6 @@ package com.shikkeram.server.security;
 import com.shikkeram.server.filters.JWTFilter;
 import com.shikkeram.server.services.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,6 +40,7 @@ public class SecurityConfig {
                 .formLogin().disable()
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
+                                .requestMatchers("/images/**").permitAll()
                                 .requestMatchers("/api/auth/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")

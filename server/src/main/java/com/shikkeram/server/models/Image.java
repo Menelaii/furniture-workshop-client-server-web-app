@@ -18,4 +18,10 @@ public class Image extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "furniture_id", referencedColumnName = "id")
     private Furniture furniture;
+
+    public Image(String link, boolean isThumbnail, Furniture furniture) {
+        this.link = link;
+        this.isThumbnail = isThumbnail;
+        this.furniture = furniture;
+    }
 }

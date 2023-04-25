@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.Optional;
 
 @Component
 public class JWTUtil {
@@ -27,14 +28,18 @@ public class JWTUtil {
                 .sign(Algorithm.HMAC256(secret));
     }
 
-    public String validateTokenAndRetrieveClaim(String token) throws JWTVerificationException {
-        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(secret))
-                .withSubject("user details")
-                .withIssuer("shik-keram")
-                .build();
+    public Optional<String> validateTokenAndRetrieveClaim(String token) {
+        try {
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(secret))
+                    .withSubject("user details")
+                    .withIssuer("shik-keram")
+                    .build();
 
-        DecodedJWT decodedJWT = verifier.verify(token);
+            DecodedJWT decodedJWT = verifier.verify(token);
 
-        return decodedJWT.getClaim("username").asString();
+            return Optional.of(decodedJWT.getClaim("username").asString());
+        } catch (JWTVerificationException e) {
+            return Optional.empty();
+        }
     }
 }

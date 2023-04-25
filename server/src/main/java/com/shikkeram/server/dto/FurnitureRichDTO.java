@@ -7,16 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class FurnitureRichDTO {
-    private String title;
-    private String description;
-    private String form;
-    private double price;
-    private int priority;
-    private Double length;
-    private Double width;
-    private Double height;
-    private Double diameter;
-    private FurnitureTypeShortDTO furnitureType;
+public class FurnitureRichDTO extends FurnitureDTO {
     private List<ImageDTO> images;
 }

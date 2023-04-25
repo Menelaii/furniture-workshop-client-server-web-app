@@ -1,6 +1,6 @@
-import {Furniture} from "./furniture";
+import {FurnitureRich} from "./furnitureRich";
 
 export interface FurniturePage {
-  furniture: Furniture[]
+  furniture: FurnitureRich[]
   totalPages: number
 }

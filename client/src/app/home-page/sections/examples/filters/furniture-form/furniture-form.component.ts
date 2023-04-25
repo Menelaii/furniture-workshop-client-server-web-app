@@ -1,5 +1,7 @@
-import {Component, OnChanges} from '@angular/core';
+import {Component} from '@angular/core';
 import {FiltersProviderService} from "../../filters-provider.service";
+import {FurnitureFormService} from "../../../../../shared/services/furniture-form.service";
+import {FurnitureForm} from "../../../../../shared/interfaces/furniture-form";
 
 @Component({
   selector: 'app-furniture-form',
@@ -7,8 +9,11 @@ import {FiltersProviderService} from "../../filters-provider.service";
   styleUrls: ['./furniture-form.component.sass']
 })
 export class FurnitureFormComponent {
+  forms: FurnitureForm[]
 
-  constructor(public filtersProvider: FiltersProviderService) {
+  constructor(public filtersProvider: FiltersProviderService,
+              private furnitureFormService: FurnitureFormService) {
+    this.forms = this.furnitureFormService.getForms()
   }
 
   onChange($event:any) {

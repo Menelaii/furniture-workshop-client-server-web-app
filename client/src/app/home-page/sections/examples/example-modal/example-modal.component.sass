@@ -1,6 +1,15 @@
 @import "src/app/home-page/home-page.component"
 @import "src/styles"
 
+.edit-button
+  width: 22px
+  height: 22px
+  min-width: 22px
+  min-height: 22px
+  margin-left: 10px
+  margin-bottom: 3px
+  cursor: pointer
+
 .modal-dialog
   margin: 0 auto
   min-width: 953px
@@ -16,10 +25,9 @@
   padding-top: 12px
   padding-left: 27px
   &__info
-    display: flex
-    flex-direction: row
-    app-carousel
-      margin-right: 16.5px
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 16.5px
   h2
     margin-bottom: 4px
     font-family: 'Roboto Medium', monospace
@@ -33,11 +41,11 @@
     font-size: 16px
     line-height: 19px
     color: $color-dark-one
-    margin-bottom: 0px
+    margin-bottom: 0
   &__description-text
     font-family: 'PT Serif Regular', monospace
     font-size: 16px
     line-height: 21px
     color: $color-dark-one
-    min-height: 189px
-    min-width: 526px
+    //min-height: 189px
+    //min-width: 526px

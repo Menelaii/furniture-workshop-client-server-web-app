@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FurnitureTypeShortDTO {
-    public Integer id;
+    private Integer id;
 }

@@ -15,11 +15,10 @@ export class AuthService {
   }
 
   signIn(user:User):Observable<AuthResponse | null> {
-    console.log("sending user : " + user.username)
     return this.http.post<AuthResponse>(this.signInUrl, user)
       .pipe(
         tap(this.storage.setToken),
-        //catchError(this.handleError.bind(this))
+        //catchError(this.handleError.bind(this)) todo
       )
   }
 

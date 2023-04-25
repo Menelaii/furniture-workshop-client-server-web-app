@@ -1,4 +1,4 @@
 export interface FurnitureType {
   id: number
-  name: string
+  name?: string
 }
