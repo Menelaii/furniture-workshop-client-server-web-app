@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Review} from "../interfaces/review";
-import {Urls} from "./urls";
 import {TokenStorageService} from "./token-storage.service";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class ReviewsService {
@@ -13,11 +13,11 @@ export class ReviewsService {
   }
 
   public getAll():Observable<Review[]> {
-    return this.http.get<Review[]>(Urls.REVIEWS)
+    return this.http.get<Review[]>(environment.reviewsURL)
   }
 
   post(newReview: any):Observable<any> {
-    return this.http.post(Urls.REVIEWS, newReview, {
+    return this.http.post(environment.reviewsURL, newReview, {
       headers: new HttpHeaders({
         'Authorization': 'bearer ' + this.tokenStorage.getToken() ?? ''
       })
@@ -25,7 +25,7 @@ export class ReviewsService {
   }
 
   delete(id: number):Observable<any> {
-    return this.http.delete(Urls.REVIEWS + '/' + id, {
+    return this.http.delete(environment.reviewsURL + '/' + id, {
       headers: new HttpHeaders({
         'Authorization': 'bearer ' + this.tokenStorage.getToken() ?? ''
       })

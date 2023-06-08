@@ -3,44 +3,84 @@
 
 .furniture-template
   cursor: pointer
-  width: 296px
   background: $color-background
-  box-shadow: rgb(0 0 0 / 28%) 0px 3px 8px //0px 4px 4px rgba(0, 0, 0, 0.25)
-  min-height: 394.95px
+  box-shadow: rgb(0 0 0 / 28%) 0 3px 8px
   &__content
     display: flex
     flex-direction: column
     align-items: center
-    padding: 0px 13px 10px
+    padding: 0 0.8125em 0.625em
   &__img
-    width: 100%
-    height: 217.18px
-    min-width: 100%
-    min-height: 217.18px
+    max-width: 100%
     margin-bottom: 14.01px
+    object-fit: contain
   &__header
     font-family: 'Roboto Medium', monospace
-    font-size: 18px
-    line-height: 21px
+    text-align: center
+    font-size: 17px
     color: $color-dark-one
-    margin-bottom: 10.34px
+    margin-bottom: 0.64625em
   &__size-line
     font-family: 'Roboto Regular', monospace
     font-size: 18px
-    line-height: 22px
     color: $color-dark-one
-    margin-bottom: 0px
+    margin-bottom: 0
   &__price
     font-family: 'Roboto Regular', monospace
     font-size: 18px
-    line-height: 22px
     color: $color-orange
-    margin-bottom: 0px
+    margin-bottom: 0
   &__line
     width: 71%
     height: 1px
     background-color: $color-dark-one
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
-    margin-bottom: 9.7px
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+    margin-bottom: 0.606em
 .mb-13
-  margin-bottom: 13.09px
+  margin-bottom: 0.818125em
+
+@media(max-width: 1127px)
+  .furniture-template
+    font-size: 13px
+    &__header
+      font-size: 15px
+    &__price
+      font-size: 13px
+    &__size-line
+      font-size: 13px
+@media(max-width: 951px)
+  .furniture-template
+    font-size: 12px
+    &__header
+      font-size: 13px
+    &__price
+      font-size: 12px
+    &__size-line
+      font-size: 12px
+@media(max-width: 732px)
+  .furniture-template
+    font-size: 11px
+    &__header
+      font-size: 12px
+    &__price
+      font-size: 11px
+    &__size-line
+      font-size: 11px
+@media(max-width: 600px)
+  .furniture-template
+    font-size: 12px
+    &__header
+      font-size: 13px
+    &__price
+      font-size: 12px
+    &__size-line
+      font-size: 12px
+@media(max-width: 354px)
+  .furniture-template
+    font-size: 11px
+    &__header
+      font-size: 12px
+    &__price
+      font-size: 11px
+    &__size-line
+      font-size: 11px

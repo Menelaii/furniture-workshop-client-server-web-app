@@ -1,12 +1,11 @@
 //@import "src/app/home-page/home-page.component"
 
-$accordion-text-font-size: 18px
-$accordion-header-font-size: 20px
 $color-dark-one: #4C4E59
 $color-dark-two: #626473
 $color-orange: #BF6F41
+
 .section
-  margin-bottom: 100px
+  margin-bottom: 80px !important
 
 .edit-button
   width: 22px
@@ -26,40 +25,41 @@ $color-orange: #BF6F41
   font-size: 22px
   color: $color-dark-two
   background-color: #F2F2F2
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
 
 .accordion-header
   margin-bottom: 4px
 
 .accordion-body
-  padding-left: 30px
-  padding-top: 40px
-  padding-bottom: 50px
+  font-size: 18px
+  padding: 1.5rem 1rem 2rem
   color: $color-dark-one
   background-color: #F6F5FA
   a
-    font-size: $accordion-text-font-size
     text-decoration-line: underline
     color: $color-dark-one
   h3
     font-family: 'Roboto Medium', monospace
-    font-size: $accordion-header-font-size
-    line-height: 28px
-    margin-bottom: 0px
+    font-size: 20px
+    //line-height: 28px
+    margin-bottom: 0
     color: $color-dark-one
   p
     font-family: 'Roboto Light', monospace
-    font-size: $accordion-text-font-size
-    line-height: 28px
+    //line-height: 28px
     color: $color-dark-one
+  ul
+    padding-left: 15px
+    ul
+      padding-left: 10px
 
 
 ul
   list-style: disc inside
   li
-    margin-bottom: 0px
+    margin-bottom: 0
     &:last-child
-      margin-bottom: 0px
+      margin-bottom: 0
     p
       display: inline
 
@@ -69,29 +69,60 @@ ul
   margin-bottom: 30px
 .mb-42
   margin-bottom: 42px
-.pt-20
-  padding-top: 20px
+.mb-20
+  margin-bottom: 20px
+.pt-4px
+  padding-top: 4px
 .light
   font-family: 'Roboto Light', monospace
-
+.no-marker
+  list-style-type: none
 .furniture-links
   font-family: 'Roboto Regular', monospace
+  ul
+    padding-left: 15px
   li
-    margin-bottom: 0px
+    margin-bottom: 0
 
 .plate
   a
     font-family: 'Roboto Light', monospace
-    font-size: $accordion-text-font-size
     text-decoration-line: underline
     color: $color-dark-one
 .price
-  ul
-    li
-      padding-left: 50px
   strong
     font-family: "Roboto Regular", monospace
 
 .no-ul-style
   list-style: none
   margin-left: 20px
+
+@media(max-width: 640px)
+  .section
+    margin-bottom: 42px
+  .accordion-body
+    font-size: 13px
+    h3
+      font-size: 15px
+  .accordion-button
+    font-size: 16px
+@media(max-width: 497px)
+  .accordion-body
+    font-size: 13px
+    h3
+      font-size: 14px
+  .accordion-button
+    font-size: 14px
+@media(max-width: 443px)
+  .accordion-body
+    padding: 0.5rem 0.4rem 0.2rem
+    font-size: 12px
+    h3
+      font-size: 12px
+    ul
+      padding-left: 4px
+  .accordion-button
+    font-size: 12px
+    padding: 0.3rem 1.25rem
+  .about-price
+    font-size: 10px

@@ -1,11 +1,10 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Urls} from "./urls";
 import {FurniturePage} from "../interfaces/furniture-page";
 import {Filters} from "../../home-page/sections/examples/filters/filters";
 import {TokenStorageService} from "./token-storage.service";
-import {FurnitureRich} from "../interfaces/furnitureRich";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn:'root'
@@ -17,7 +16,7 @@ export class FurnitureService {
   }
 
   getAll(filters:Filters, page: number = 0, size: number = 6) : Observable<FurniturePage> {
-    let url = new URL(Urls.FURNITURE)
+    let url = new URL(environment.furnitureURL)
     url.searchParams.append('page', page.toString())
     url.searchParams.append('itemsPerPage', size.toString())
 
@@ -44,7 +43,7 @@ export class FurnitureService {
   }
 
   delete(id: number):Observable<any> {
-    return this.http.delete(Urls.FURNITURE + '/' + id, {
+    return this.http.delete(environment.furnitureURL + '/' + id, {
       headers: new HttpHeaders({
         'Authorization': 'bearer ' + this.tokenStorage.getToken() ?? ''
       })
@@ -52,7 +51,7 @@ export class FurnitureService {
   }
 
   post(formData: FormData):Observable<any> {
-    return this.http.post(Urls.FURNITURE, formData,{
+    return this.http.post(environment.furnitureURL, formData,{
       headers: new HttpHeaders({
         'Authorization': 'bearer ' + this.tokenStorage.getToken() ?? ''})
     })

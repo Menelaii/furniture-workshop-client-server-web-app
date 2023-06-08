@@ -1,7 +1,10 @@
-<div class="filters-container">
-  <app-furniture-type class="mr-15"></app-furniture-type>
-  <app-price class="mr-15"></app-price>
-  <app-furniture-form class="mr-15"></app-furniture-form>
-  <app-furniture-size class="mr-345"></app-furniture-size>
+<div class="filters">
+  <div class="filters__controls">
+    <app-furniture-type></app-furniture-type>
+    <app-price class="mr-15"></app-price>
+    <app-furniture-form></app-furniture-form>
+    <app-furniture-size></app-furniture-size>
+  </div>
+
   <img (click)="onClearFiltersClick()" class="filters-btn" src="/assets/icons/filter-remove.svg" alt="убрать фильтры">
 </div>

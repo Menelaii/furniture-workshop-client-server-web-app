@@ -1,33 +1,38 @@
 @import "src/app/home-page/home-page.component"
 
+.aligned-row
+  display: flex
+  flex-direction: row
+  align-items: center
+.mb-12
+  margin-bottom: 12px
 .about
   display: flex
   flex-direction: column
-  max-width: 100%
+  max-width: 945px
+  margin: 0 auto 100px
   &__text
+    text-align: justify
     font-family: 'PT Serif Regular', serif
     font-size: 20px
     color: $color-dark-one
   &__to-do
-    margin-bottom: 12px
+    margin-bottom: 10px
   &__h1
     margin-left: auto
     margin-right: auto
-    margin-bottom: 18px
+    margin-bottom: 0.4rem
   &__contacts
     display: flex
     flex-direction: row
     align-items: center
-  &__phone-numbers
-    margin-right: 70px
+    justify-content: space-between
+    font-size: 20px
   &__contact-type-icon
-    margin-right: 12px
-    max-height: 60px
-    max-width: 60px
+    margin-right: 0.4rem
+    width: 60px
   &__contacts-phone-p
     font-family: 'Roboto Medium', monospace
-    font-size: 20px
-    line-height: 23px
     display: flex
     align-items: center
     color: $color-dark-one
@@ -37,23 +42,65 @@
     display: flex
     flex-direction: row
     align-items: center
-    margin-right: 12.25px
+    margin-right: 0.4rem
     max-height: 60px
   &__messengers-links
     display: flex
     flex-direction: row
   &__messenger-icon
     margin-right: 3.06px
-    max-width: 22.44px
-    max-height: 22.44px
+    width: 22.44px
   &__messenger-icon_small
     max-width: 20.94px
     max-height: 20.94px
   &__contact-link
     font-family: 'Roboto Medium', monospace
-    font-size: 20px
-    line-height: 23px
     display: flex
     align-items: center
     text-decoration-line: underline
     color: $color-dark-one
+@media(max-width: 1284px)
+  .about
+    &__contact-type-icon
+      width: 50px
+    &__contacts
+      font-size: 16px
+@media(max-width: 1084px)
+  .aligned-row:first-child
+    margin-bottom: 10px
+  .about
+    &__contacts
+      flex-direction: column
+      align-items: flex-start
+@media(max-width: 640px)
+  .about
+    &__h1
+      font-size: 22px
+    &__text
+      font-size: 12px
+    &__contact-type-icon
+      width: 35px
+    &__contacts
+      font-size: 12px
+    &__messenger-icon
+      width: 16px
+@media(max-width: 497px)
+  .about
+    &__h1
+      font-size: 17px
+    &__text
+      font-size: 14px
+    &__contact-type-icon
+      width: 30px
+    &__contacts
+      font-size: 12px
+@media(max-width: 404px)
+  .about
+    &__h1
+      font-size: 14px
+    &__text
+      font-size: 10px
+    &__contact-type-icon
+      width: 25px
+    &__contacts
+      font-size: 8.9px

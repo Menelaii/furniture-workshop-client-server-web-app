@@ -8,13 +8,25 @@ $color-orange: #BF6F41
 .section-header
   font-family: 'Roboto Bold', monospace
   font-size: 28px
-  line-height: 33px
   color: $color-orange
 
 .my-container
   margin: 0 auto
-  //width: 66.25%
-  width: 954px
+  width: 66.25%
+  max-width: 984px
 
 .section
-  margin-bottom: 80px
+  margin-bottom: 80px !important
+
+@media(max-width: 640px)
+  .section
+    margin-bottom: 42px !important
+@media(max-width: 775px)
+  .my-container
+    width: 76.25%
+@media(max-width: 677px)
+  .my-container
+    width: 86.25%
+@media(max-width: 484px)
+  .my-container
+    width: 96.25%

@@ -1,17 +1,42 @@
 @import "src/styles"
 @import "src/app/home-page/home-page.component"
 
-.filters-container
+.filters
+  height: 55px
+  background: $color-background
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+  margin-bottom: 18.63px
   display: flex
   flex-direction: row
-  justify-content: flex-start
   align-items: center
+  padding: 0 1.375em
+  justify-content: space-between
+  &__controls
+    width: 80%
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    align-items: center
 .filters-btn
-  width: 32px
-  height: 32px
+  width: 2em
+  height: 2em
   color: #4C4E59
   cursor: pointer
-.mr-15
-  margin-right: 15px
-.mr-345
-  margin-right: 345px
+
+@media(max-width: 824px)
+  .filters
+    font-size: 14px
+@media(max-width: 710px)
+  .filters
+    font-size: 13px
+    justify-content: space-around
+@media(max-width: 423px)
+  .filters
+    font-size: 12px
+    padding: 0.5em
+@media(max-width: 384px)
+  .filters
+    font-size: 12px
+@media(max-width: 361px)
+  .filters
+    font-size: 10px
