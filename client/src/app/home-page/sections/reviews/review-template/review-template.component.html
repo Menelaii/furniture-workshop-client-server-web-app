@@ -9,25 +9,23 @@
     </div>
   </div>
 
-  <div class="review-template__content">
-    <div class="mb-20" *ngIf="!isShort; else shortReview">
-      <p class="review-template__review-text">
-        {{shortText}}<span [id]="dotsId" >...</span><span [id]="moreTextId" class="more">{{moreText}}</span>
-      </p>
+  <div class="mb-20" *ngIf="!isShort; else shortReview">
+    <p class="review-template__review-text">
+      {{shortText}}<span [id]="dotsId" >...</span><span [id]="moreTextId" class="more">{{moreText}}</span>
+    </p>
 
-      <a class="review-template__review-text-a"
-         (click)="onReadMoreClick()" [id]="readMoreId">Читать дальше</a>
-    </div>
+    <a class="review-template__review-text-a"
+       (click)="onReadMoreClick()" [id]="readMoreId">Читать дальше</a>
+  </div>
 
-    <ng-template #shortReview>
-      <p class="review-template__review-text mb-20">
-        {{shortText}}
-      </p>
-    </ng-template>
+  <ng-template #shortReview>
+    <p class="review-template__review-text mb-20">
+      {{shortText}}
+    </p>
+  </ng-template>
 
-    <div class="review-template__published-on">
-      <p>Опубликовано на:</p>
-      <img src="assets/icons/avito.svg">
-    </div>
+  <div class="review-template__published-on">
+    <p>Опубликовано на:</p>
+    <img src="assets/icons/avito.svg">
   </div>
 </div>

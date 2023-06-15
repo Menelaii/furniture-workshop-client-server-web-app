@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ReviewsService} from "../../../shared/services/reviews.service";
 import {Review} from "../../../shared/interfaces/review";
 import {Utils} from "../../../shared/services/utils";
@@ -14,6 +14,9 @@ export class ReviewsComponent implements OnInit {
   reviews: Review[] = []
   loading = false
   isAuthenticated = false
+  elementsPerItem = 3
+  minScreenWidthForResize = 600
+  resized = false
 
   constructor(private service: ReviewsService,
               private authService: AuthService,
@@ -23,6 +26,19 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchReviews()
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (window.innerWidth <= this.minScreenWidthForResize) {
+      this.elementsPerItem = 2
+      this.resized = true
+    } else if (this.resized && window.innerWidth > this.minScreenWidthForResize) {
+      this.elementsPerItem = 3
+      this.resized = false
+
+      this.fetchReviews()
+    }
   }
 
   fetchReviews() {

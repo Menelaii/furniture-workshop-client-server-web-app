@@ -10,42 +10,105 @@
   margin-bottom: 3px
   cursor: pointer
 
+.modal
+  font-size: 16px
+  border-bottom: 1px solid var(--bs-modal-header-border-color)
+  border-top-left-radius: calc(0.5em - 1px)
+  border-top-right-radius: calc(0.5em - 1px)
+  padding: 1em 1em !important
+  h2
+    font-size: calc(1em + 8px)
+  h5
+    font-size: calc(1em + 12px)
 .modal-dialog
   margin: 0 auto
-  min-width: 953px
+  min-width: 59.5625em
 .modal-content
-  min-height: 600px
+  min-height: 37.5em
 .modal-header
+  padding: 1em 1em
   h5
     font-family: 'Roboto Bold', monospace
-    font-size: 28px
-    line-height: 33px
     color: $color-orange
 .modal-body
-  padding-top: 12px
-  padding-left: 27px
+  padding-top: 0.75em
+  padding-left: 1.6875em
+  padding-right: 1.6875em
   &__info
     display: grid
     grid-template-columns: 1fr 1fr
-    grid-column-gap: 16.5px
+    grid-column-gap: 1.03125em
   h2
-    margin-bottom: 4px
+    margin-bottom: 0.25em
     font-family: 'Roboto Medium', monospace
-    font-size: 24px
-    line-height: 28px
     color: $color-dark-one
   &__size-lines
-    margin-bottom: 14px
+    margin-bottom: 0.875em
   &__size-line
     font-family: 'Roboto Light', monospace
-    font-size: 16px
-    line-height: 19px
     color: $color-dark-one
     margin-bottom: 0
   &__description-text
+    text-align: justify
     font-family: 'PT Serif Regular', monospace
-    font-size: 16px
-    line-height: 21px
     color: $color-dark-one
-    //min-height: 189px
-    //min-width: 526px
+
+@media(max-width: 961px)
+  .modal
+    font-size: 14px
+@media(max-width: 841px)
+  .modal
+    font-size: 13px
+@media(max-width: 779px)
+  .modal
+    font-size: 12px
+@media(max-width: 724px)
+  .modal
+    font-size: 10px
+  .modal-body
+    &__size-line
+      font-size: calc(1em + 1px)
+    &__description-text
+      font-size: calc(1em + 1px)
+@media(max-width: 600px)
+  .modal
+    font-size: 9px
+  .modal-header
+    button
+      font-size: 10px
+      padding-right: 2.5em !important
+@media(max-width: 537px)
+  .modal-body
+    &__size-line
+      font-size: calc(1em + 6px)
+    &__description-text
+      font-size: calc(1em + 6px)
+    &__info
+      grid-row-gap: 3.03125em
+      grid-template-columns: 1fr
+  .modal
+    font-size: 8px
+@media(max-width: 479px)
+  .modal
+    font-size: 6px
+@media(max-width: 401px)
+  .modal
+    font-size: 4px
+  .modal-body
+    &__size-line
+      font-size: calc(1em + 8px)
+    &__description-text
+      font-size: calc(1em + 8px)
+@media(max-width: 351px)
+  .modal
+    font-size: 3px
+    h2
+      font-size: calc(1em + 10px)
+    h5
+      font-size: calc(1em + 10px)
+  .modal-body
+    &__size-line
+      font-size: calc(1em + 6px)
+    &__description-text
+      font-size: calc(1em + 6px)
+

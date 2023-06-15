@@ -14,10 +14,10 @@
             <label for="title">Название</label>
           </div>
 
-          <div class="form-floating mb-10">
-            <input type="text" class="form-control" id="description"
-                   placeholder="Описание" formControlName="description">
+          <div class="mb-10 w-94">
             <label for="description">Описание</label>
+            <textarea class="form-control shadow" id="description"
+                      formControlName="description"></textarea>
           </div>
 
           <div class="form-floating mb-10">
@@ -56,14 +56,14 @@
             <label for="diameter">Диаметр</label>
           </div>
 
-          <select class="form-select mb-10" formControlName="form">
+          <select class="form-select mb-10 w-94" formControlName="form">
             <option value="0" selected>Форма</option>
             <option *ngFor="let form of forms" [value]="form.internalName">
               {{form.name}}
             </option>
           </select>
 
-          <select class="form-select mb-10" formControlName="furnitureType">
+          <select class="form-select mb-10 w-94" formControlName="furnitureType">
             <option value="0" selected>Вид мебели</option>
             <option *ngFor="let type of types" [value]="type.id">
               {{type.name}}

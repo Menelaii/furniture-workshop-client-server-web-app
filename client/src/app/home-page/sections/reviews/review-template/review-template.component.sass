@@ -1,55 +1,75 @@
 @import "src/app/home-page/home-page.component"
 
 .review-template
-  width: 296px
-  min-height: 338px
+  min-height: 21.125em
   background-color: #F2F2F2
-  box-shadow: rgb(0 0 0 / 28%) 0px 3px 8px //0 4px 4px rgba(0, 0, 0, 0.25)
-  padding: 15px 16px 19px 22px
-  &__content
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    min-height: 236px
+  box-shadow: rgb(0 0 0 / 28%) 0 3px 8px //0 4px 4px rgba(0, 0, 0, 0.25)
+  padding: 0.9375em 1em 1.1875em 1em
+  font-size: 1em
+  display: flex
+  flex-direction: column
   &__header
     display: flex
     flex-direction: row
-    margin-bottom: 14px
+    margin-bottom: 0.875em
   &__details
     display: flex
     flex-direction: column
   &__profile-icon
-    width: 54px
-    height: 54px
-    margin-right: 12px
+    width: 3.375em
+    height: 3.375em
+    margin-right: 0.75em
   &__reviewer-name
     font-family: 'Roboto Medium', monospace
-    font-size: 17px
-    line-height: 21px
-    margin-bottom: 0px
+    font-size: calc(1em + 1px)
+    margin-bottom: 0
     color: $color-dark-one
   &__review-text
+    text-align: justify
     font-family: 'Roboto Regular', monospace
-    font-size: 16px
-    line-height: 19px
     color: $color-dark-one
+    font-size: calc(1em - 1px)
   &__review-text-a
     font-family: 'Roboto Regular', monospace
-    font-size: 14px
-    line-height: 19px
+    font-size: calc(1em - 2px)
     color: $color-dark-one
     cursor: pointer
     text-decoration: none
+  &__stars
+    img
+      width: 1.3125em
+      height: 1.1875em
   &__published-on
     display: flex
     flex-direction: row
     align-items: center
+    margin-top: auto
+    text-align: end
     p
       font-family: 'Roboto Light', monospace
-      font-size: 16px
-      line-height: 19px
-      margin-right: 11px
+      margin-right: 0.6875em
+    img
+      width: 5.5625em
+      heigth: 1.9375em
 .more
   display: none
 .mb-20
-    margin-bottom: 20px
+    margin-bottom: 1.25em
+
+@media(max-width: 901px)
+  .review-template
+    &__published-on
+      p
+        font-size: calc(1em - 1px)
+@media(max-width: 385px)
+  .review-template
+    font-size: 1em
+    &__reviewer-name
+      font-size: calc(1em + 1px)
+    &__review-text
+      font-size: calc(1em - 1px)
+    &__review-text-a
+      font-size: calc(1em - 1.3px)
+    &__published-on
+      p
+        font-size: 1em

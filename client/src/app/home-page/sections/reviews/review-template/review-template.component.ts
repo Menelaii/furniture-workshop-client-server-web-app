@@ -15,7 +15,7 @@ export class ReviewTemplateComponent implements OnInit {
   readMoreId:string = ''
   shortText: string = ''
   moreText: string = ''
-  symbolsInShort:number = 160
+  symbolsInShort:number = 110
   isShort = false
 
   constructor(public utils:Utils) {

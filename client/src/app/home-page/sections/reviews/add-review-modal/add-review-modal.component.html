@@ -21,12 +21,11 @@
             <label for="floatingInputStars">Звёзды</label>
           </div>
 
-          <div class="form-floating mb-10">
-            <input type="text" class="form-control"
-                   id="floatingInputText" placeholder="3424234" formControlName="text">
+          <div class="mb-10" style="width:80%;">
             <label for="floatingInputText">Ревью</label>
+            <textarea class="form-control shadow"
+                      id="floatingInputText" formControlName="text"></textarea>
           </div>
-
           <button type="submit" [disabled]="form.invalid || submitted"
                   class="btn btn-primary">Отправить</button>
         </form>
