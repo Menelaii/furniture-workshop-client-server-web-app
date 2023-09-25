@@ -5,6 +5,8 @@ import {FurniturePage} from "../interfaces/furniture-page";
 import {Filters} from "../../home-page/sections/examples/filters/filters";
 import {TokenStorageService} from "./token-storage.service";
 import {environment} from "../../../environments/environment";
+import {Furniture} from "../interfaces/furniture";
+import {UpdatePreviewRequest} from "../interfaces/update-preview-request";
 
 @Injectable({
   providedIn:'root'
@@ -52,6 +54,22 @@ export class FurnitureService {
 
   post(formData: FormData):Observable<any> {
     return this.http.post(environment.furnitureURL, formData,{
+      headers: new HttpHeaders({
+        'Authorization': 'bearer ' + this.tokenStorage.getToken() ?? ''})
+    })
+  }
+
+  patch(id: number, furniture: Furniture):Observable<any> {
+    return this.http.patch( `${environment.furnitureURL}/${id}`, furniture,{
+      headers: new HttpHeaders({
+        'Authorization': 'bearer ' + this.tokenStorage.getToken() ?? ''})
+    })
+  }
+
+  changePreview(furnitureId: number, newPreviewId: number): Observable<any> {
+    const body: UpdatePreviewRequest = { newPreviewId: newPreviewId }
+
+    return this.http.patch(`${environment.furnitureURL}/${furnitureId}/preview`, body,{
       headers: new HttpHeaders({
         'Authorization': 'bearer ' + this.tokenStorage.getToken() ?? ''})
     })

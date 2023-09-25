@@ -4,17 +4,17 @@
 
   <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
     <div class="carousel-inner">
-      <ng-container *ngIf="!isAuthenticated; else removableTemplates">
-        <ng-container *ngFor="let i of utils.createRange(carouselItemsCount)">
-          <div class="carousel-item" [ngClass]="{ 'active': i == 0 }">
-            <div class="reviews-grid">
-              <ng-container *ngFor="let j of utils.createRange(elementsPerItem)">
-                <app-review-template *ngIf="reviews.length > i * elementsPerItem + j"
-                                     [review]="reviews[i * elementsPerItem + j]"></app-review-template>
-              </ng-container>
-            </div>
+      <ng-container *ngFor="let i of utils.createRange(carouselItemsCount)">
+        <div class="carousel-item" [ngClass]="{ 'active': i == 0 }">
+          <div class="reviews-grid">
+            <ng-container *ngFor="let j of utils.createRange(elementsPerItem)">
+              <app-review-template *ngIf="reviews.length > i * elementsPerItem + j"
+                                   [review]="reviews[i * elementsPerItem + j]"
+                                   (onRemoveButtonClick)="onRemoveButtonClick($event)"
+                                   [isAuthenticated] = isAuthenticated></app-review-template>
+            </ng-container>
           </div>
-        </ng-container>
+        </div>
       </ng-container>
     </div>
 
@@ -47,32 +47,4 @@
     Отзывы<img class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
                data-bs-toggle="modal" data-bs-target="#addReviewModal">
   </h1>
-</ng-template>
-
-<ng-template #removableTemplates>
-  <ng-container *ngFor="let i of utils.createRange(carouselItemsCount)">
-    <div *ngIf="i != 0; else first" class="carousel-item">
-      <div class="reviews-grid">
-        <ng-container *ngFor="let j of utils.createRange(3)">
-          <app-removable-review-template
-            *ngIf="reviews.length > i * 3 + j"
-            [review]="reviews[i * 3 + j]" (onRemoveButtonClick)="onRemoveButtonClick($event)">
-          </app-removable-review-template>
-        </ng-container>
-      </div>
-    </div>
-
-    <ng-template #first>
-      <div class="carousel-item active">
-        <div class="reviews-grid">
-          <ng-container *ngFor="let j of utils.createRange(3)">
-            <app-removable-review-template
-              *ngIf="reviews.length > i * 3 + j"
-              [review]="reviews[i * 3 + j]" (onRemoveButtonClick)="onRemoveButtonClick($event)">
-            </app-removable-review-template>
-          </ng-container>
-        </div>
-      </div>
-    </ng-template>
-  </ng-container>
 </ng-template>

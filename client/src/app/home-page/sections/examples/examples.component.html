@@ -4,6 +4,7 @@
             class="add-button"
             data-bs-toggle="modal"
             data-bs-target="#addFurnitureForm"
+            (click)="onShowAddFormClick()"
     >Добавить мебель</button>
     <app-add-furniture-form
       (onSubmitted)="fetchExamples()"
@@ -32,5 +33,5 @@
 </section>
 
 <app-example-modal [furniture]="selected"
-(onRemoveClick)="onRemoveButtonClick($event)"
+(onRemoveClick)="onRemoveButtonClick($event)" (onEdit)="onEditSubmitted()"
 ></app-example-modal>

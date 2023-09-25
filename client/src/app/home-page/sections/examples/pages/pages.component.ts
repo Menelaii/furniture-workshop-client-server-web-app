@@ -13,43 +13,15 @@ export class PagesComponent implements OnInit {
   buttons:PageButton[] = [{index: 0, page: 1, selected: true, isDisabled: false}]
   selectedButton: PageButton = this.buttons[0]
   buttonsMax = 7
-  startCenterPage = 4
+  initialCenterPage = 4
+  centerIndex = (this.buttonsMax - 1) / 2
+
+  constructor() {
+    this.createButtons(this.totalPages)
+  }
 
   ngOnInit() {
-    this.createButtons(this.totalPages)
-    this.startCenterPage = this.buttons[(this.buttons.length - 1) / 2].page
-
-    let centerIndex = (this.buttons.length - 1) / 2
-    let centerPage = this.startCenterPage
-    let button = this.currentPage % this.buttons.length == 0
-      ? this.buttons[this.buttons.length - 1]
-      : this.buttons[this.currentPage % this.buttons.length - 1]
-
-    if (button.index > centerIndex) {
-      if (button.page + centerIndex > this.totalPages) {
-        this.select(this.buttons[centerIndex + button.page % this.buttons.length])
-        this.resetPages(this.totalPages - centerIndex, centerIndex)
-      } else {
-        this.select(this.buttons[centerIndex])
-        this.resetPages(button.page, centerIndex)
-      }
-    } else {
-      if (button.index < centerIndex && this.isShifted()) {
-        let centerPage: number
-        if (button.page >= this.startCenterPage) {
-          centerPage = button.page
-          this.select(this.buttons[centerIndex])
-        } else {
-          centerPage = this.startCenterPage
-          this.select(this.buttons[button.page - 1])
-        }
-        this.resetPages(centerPage, centerIndex)
-      } else {
-        this.select(button)
-      }
-    }
-
-    this.resetPages(centerPage, centerIndex)
+    this.redraw()
   }
 
   onPageButtonClick(button: PageButton) {
@@ -57,6 +29,8 @@ export class PagesComponent implements OnInit {
 
     window.location.href='#examples'
     this.currentPage = button.page
+
+    this.redraw()
     this.onPageClick.emit(this.currentPage)
   }
 
@@ -76,6 +50,38 @@ export class PagesComponent implements OnInit {
     this.onPageButtonClick(this.buttons[this.selectedButton.index - 1])
   }
 
+  createButtons(activeAmount:  number) {
+    if (activeAmount > this.buttonsMax) {
+      activeAmount = this.buttonsMax
+    }
+
+    this.buttons = new Array<PageButton>(activeAmount)
+    for (let i = 0; i < this.buttonsMax; i++) {
+      this.buttons[i] = new PageButton(i, i + 1, false, false)
+    }
+  }
+
+  redraw() {
+    if (this.currentPage < this.initialCenterPage) {
+      this.select(this.buttons[this.currentPage - 1])
+
+      if (this.isShifted()) {
+        this.resetPages(this.initialCenterPage, this.centerIndex)
+      }
+    } else if (this.currentPage > this.buttons[this.centerIndex].page) {
+      this.applyOffset(this.currentPage - this.buttons[this.centerIndex].page)
+      this.select(this.buttons[this.centerIndex])
+    } else {
+      this.select(this.buttons[this.centerIndex])
+    }
+
+    this.disableUnnecessaryButtons()
+  }
+
+  isShifted():boolean {
+    return this.buttons[0].page != 1
+  }
+
   select(button: PageButton) {
     this.selectedButton.selected = false
     button.selected = true
@@ -90,18 +96,15 @@ export class PagesComponent implements OnInit {
     }
   }
 
-  createButtons(activeAmount:  number) {
-    if (activeAmount > this.buttonsMax) {
-      activeAmount = this.buttonsMax
-    }
-
-    this.buttons = new Array<PageButton>(activeAmount)
-    for (let i = 0; i < this.buttonsMax; i++) {
-      this.buttons[i] = {index: i, page: i + 1, selected: false, isDisabled: i >= activeAmount }
+  applyOffset(offset: number) {
+    for (let i = 0; i < this.buttons.length; i++) {
+      this.buttons[i].page += offset
     }
   }
 
-  isShifted():boolean {
-    return this.buttons[0].page != 1
+  disableUnnecessaryButtons() {
+    for (let i = 0; i < this.buttons.length; i++) {
+      this.buttons[i].isDisabled = this.buttons[i].page > this.totalPages
+    }
   }
 }

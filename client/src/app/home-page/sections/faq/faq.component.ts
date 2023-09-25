@@ -16,10 +16,10 @@ export class FaqComponent implements OnInit {
   coffeeTables = 9000
   bedsideTables = 7500
   rectangularDiningTables120x60 = 15000
-  rectangularDiningTables150x75 = 26000
-  rectangularDiningTables160x80 = 27000
-  roundDiningTablesDiameter80 = 28000
-  roundDiningTablesDiameter100 = 35000
+  rectangularDiningTables150x75 = 25000
+  rectangularDiningTables160x80 = 26000
+  roundDiningTablesDiameter80 = 25000
+  roundDiningTablesDiameter100 = 30000
   roundDiningTablesDiameter110_120 = 38000
   roundDiningTablesDiameter130_150 = 85000
   paintingInGoldOrChrome = 1500

@@ -7,16 +7,14 @@ import com.shikkeram.server.repositories.FurnitureCriteriaRepository;
 import com.shikkeram.server.repositories.FurnitureRepository;
 import com.shikkeram.server.searchCriterias.FurniturePage;
 import com.shikkeram.server.searchCriterias.FurnitureSearchCriteria;
-import com.shikkeram.server.utils.Paths;
+import com.shikkeram.server.utils.PathConverter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,10 +25,8 @@ import java.util.Optional;
 public class FurnitureService {
     private final FurnitureRepository repository;
     private final FurnitureCriteriaRepository criteriaRepository;
-    private final FileService fileService;
-
-    @Value("${serverDomain}")
-    private String serverDomain;
+    private final FileStorageService fileStorageService;
+    private final PathConverter pathConverter;
 
     public Page<Furniture> findWithFilters(FurniturePage page,
                                            FurnitureSearchCriteria furnitureSearchCriteria) {
@@ -44,17 +40,21 @@ public class FurnitureService {
     }
 
     @Transactional
-    public void save(Furniture furniture, List<MultipartFile> files) {
+    public void save(Furniture furniture, MultipartFile preview, List<MultipartFile> files) {
+        String previewPath;
         String[] imagePaths;
+
         try {
-            imagePaths = fileService.save(files);
+            previewPath = fileStorageService.save(preview);
+            imagePaths = fileStorageService.save(files);
         } catch (IOException e) {
             throw new IllegalStateException();
         }
 
         List<Image> images = new ArrayList<>(imagePaths.length);
+        images.add(new Image(pathConverter.pathToLink(previewPath), true, furniture));
         for (int i = 0; i < imagePaths.length; i++) {
-            images.add(new Image(pathToLink(imagePaths[i]),i == 0, furniture));
+            images.add(new Image(pathConverter.pathToLink(imagePaths[i]),false, furniture));
         }
 
         furniture.setImages(images);
@@ -68,10 +68,10 @@ public class FurnitureService {
         if (furniture.isPresent()) {
             List<String> paths = furniture.get().getImages()
                     .stream()
-                    .map(path -> linkToPath(path.getLink()))
+                    .map(path -> pathConverter.linkToPath(path.getLink()))
                     .toList();
 
-            fileService.deleteFiles(paths);
+            fileStorageService.deleteFiles(paths);
 
             furniture.get().removeImagesIfExists();
             repository.deleteById(id);
@@ -80,22 +80,14 @@ public class FurnitureService {
         }
     }
 
-//    @Transactional
-//    public void update(int id, Furniture updated) {
-//        throwNotFoundIfNotExists(id);
-//
-//        updated.setId(id);
-//        repository.save(updated);
-//    }
+    @Transactional
+    public void update(Integer id, Furniture updatedEntity) {
+        Furniture entity = repository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
 
-    private String pathToLink(String path) {
-        return serverDomain +
-                "/images/" +
-                Path.of(path).getFileName();
-    }
+        updatedEntity.setId(entity.getId());
+        updatedEntity.setImages(entity.getImages());
 
-    private String linkToPath(String link) {
-        return Paths.UPLOAD_DIRECTORY +
-                link.substring(29);
+        repository.save(updatedEntity);
     }
 }

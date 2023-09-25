@@ -5,13 +5,29 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
           {{furniture.title}} {{furniture.price | thousands}} ₽
-          <ng-container *ngIf="isAuthenticated">
-            <img class="edit-button" src="assets/icons/remove.svg" alt="remove.svg"
-                 data-bs-dismiss="modal"
-                 (click)="onRemoveBtnClick()"
-            >
-          </ng-container>
         </h5>
+        <ng-container *ngIf="isAuthenticated">
+          <img class="edit-button" src="assets/icons/remove.svg" alt="remove.svg"
+               data-bs-dismiss="modal"
+               (click)="onRemoveBtnClick()"
+          >
+
+          <img class="edit-button" src="assets/icons/edit.svg" alt="edit.svg"
+               data-bs-toggle="modal" data-bs-target="#editFurnitureModal"
+               (click)="onEditBtnClick()"
+          >
+
+          <img class="edit-button" src="assets/icons/add-image.svg" alt="add.svg"
+               data-bs-toggle="modal" data-bs-target="#addImageModal"
+               style="height: 30px; width: 28px;"
+               (click)="onAddImageBtnClick()"
+          >
+
+          <img class="edit-button" src="assets/icons/edit-image.svg" alt="edit.svg"
+               data-bs-toggle="modal" data-bs-target="#editImagesModal"
+               (click)="onEditImagesBtnClick()"
+          >
+        </ng-container>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
 
@@ -22,14 +38,16 @@
           <div class="modal-body__info-text">
             <div class="modal-body__size-lines">
               <h2>Габариты</h2>
-              <!--      todo get from service-->
-              <ng-container *ngIf="furniture.form == 'Прямоугольная'">
-                <p class="modal-body__size-line">Длина: <strong>{{furniture.length}} см</strong></p>
-                <p class="modal-body__size-line">Ширина: <strong>{{furniture.width}} см</strong></p>
-              </ng-container>
-              <ng-container *ngIf="furniture.form == 'Круглая'">
+
+              <ng-container *ngIf="furniture.form == 'Круглая'; else notRoundSizes">
                 <p class="modal-body__size-line">Диаметр: <strong>{{furniture.diameter}} см</strong></p>
               </ng-container>
+
+              <ng-template #notRoundSizes>
+                <p class="modal-body__size-line">Длина: <strong>{{furniture.length}} см</strong></p>
+                <p class="modal-body__size-line">Ширина: <strong>{{furniture.width}} см</strong></p>
+              </ng-template>
+
               <p class="modal-body__size-line">Высота: <strong>{{furniture.height}} см</strong></p>
             </div>
 
@@ -45,3 +63,14 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="isAuthenticated">
+  <app-edit-furniture-form #editFurnitureForm (onSubmitted)="onEditSubmitted()"
+  ></app-edit-furniture-form>
+
+  <app-add-image-form #addImageForm (onSubmitted)="onEditSubmitted()"
+  ></app-add-image-form>
+
+  <app-edit-images-form #editImagesForm (onSubmitted)="onEditSubmitted()"
+  ></app-edit-images-form>
+</ng-container>

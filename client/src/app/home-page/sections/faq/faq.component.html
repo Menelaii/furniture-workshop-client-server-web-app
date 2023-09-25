@@ -71,7 +71,7 @@
                 <p>из массива (сосна, бук)</p>
               </li>
               <li>
-                <p>отделанное камнем (искусственным или натуральным)</p>
+                <p>отделанное мозаикой</p>
               </li>
             </ul>
           </div>
@@ -103,17 +103,11 @@
 
               <li>
                 <p>
-                  сообщить какой цвет нужен, глянцевый или матовый – поищем и предложим варианты;
-                </p>
-              </li>
-
-              <li>
-                <p>
                   выбрать на сайтах <a href="https://samara.leroymerlin.ru/" target="_blank">samara.leroymerlin.ru</a>,
                   <a href="https://smr.estima.ru/" target="_blank">smr.estima.ru</a>,
                   <a href="https://agaudi.ru/" target="_blank">agaudi.ru</a>,
                   <a href="https://volga.kerama-marazzi.ru/" target="_blank">volga.kerama-marazzi.ru</a>
-                  или уточнить наличие в Самаре и сообщить нам название плиты;
+                  и др. уточнить наличие в Самаре и сообщить нам название плиты;
                 </p>
               </li>
 
@@ -122,7 +116,17 @@
                   самостоятельно в магазинах керамогранита Самары (покупаете и привозите нам).
                 </p>
               </li>
+
+              <li>
+                <p>
+                  возможно только ПОСЛЕ ОФОРМЛЕНИЯ ЗАКАЗА - написать какой нужен цвет,
+                  глянцевый или матовый – поищем и предложим варианты.
+                </p>
+              </li>
             </ul>
+
+            <p><strong>Важно! Плиты керамогранита имеют разный рисунок – могут привезти плиту с
+              рисунком отличным от образца в магазине.</strong></p>
           </div>
         </div>
 
@@ -228,18 +232,18 @@
              aria-labelledby="panelsStayOpen-headingPrice">
 
           <div class="accordion-body price">
-            <ul class="mb-42" *ngIf="!isAuthenticated;else pricesWithEditButtons">
+            <ul *ngIf="!isAuthenticated;else pricesWithEditButtons">
               <li>
-                <p><strong>Консоли</strong> – от {{consoles | thousands}} ₽</p>
+                <p><strong>Консоли</strong> – от {{consoles | thousands}} ₽;</p>
               </li>
               <li>
-                <p><strong>Тумбы</strong> – от {{pedestals | thousands}} ₽</p>
+                <p><strong>Тумбы</strong> – от {{pedestals | thousands}} ₽;</p>
               </li>
               <li>
-                <p><strong>Журнальный столик</strong> – от {{coffeeTables | thousands}} ₽</p>
+                <p><strong>Журнальный столик</strong> – от {{coffeeTables | thousands}} ₽;</p>
               </li>
               <li>
-                <p><strong>Прикроватный</strong> – от {{bedsideTables | thousands}} ₽</p>
+                <p><strong>Прикроватный</strong> – от {{bedsideTables | thousands}} ₽;</p>
               </li>
 
               <li>
@@ -282,12 +286,12 @@
 
               <li>
                 <p>Покраска подстолья в <strong>золото</strong> и <strong>хром</strong> дороже
-                  на {{paintingInGoldOrChrome}} ₽</p>
+                  на {{paintingInGoldOrChrome}} ₽.</p>
               </li>
             </ul>
 
-            <p class="about-price"><strong>Цена зависит от размера, формы,
-              вида подстолья и обработки края столешницы.
+            <p class="about-price"><strong>Цена зависит от размера,
+              формы, вида подстолья, обработки края столешницы и наличия заготовок.
               Напишите какой стол вам нужен – посчитаем цену точнее.</strong></p>
           </div>
         </div>
@@ -374,6 +378,33 @@
           </div>
         </div>
       </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingGuarantee">
+          <button class="accordion-button collapsed"
+                  type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-guarantee"
+                  aria-expanded="false" aria-controls="panelsStayOpen-guarantee">
+            Гарантия
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-guarantee"
+             class="accordion-collapse collapse"
+             aria-labelledby="panelsStayOpen-headingGuarantee">
+
+          <div class="accordion-body">
+            <h3>Гарантия</h3>
+            <p class="mb-11">Гарантируем высокое качество и передачу вам Заказа в целом, исправном виде в полной
+              комплектации. Сам керамогранит мы не производим, поэтому гарантия на него не предусмотрена.</p>
+
+            <h3>Возврат</h3>
+            <p>Покупатели имеют право на возврат в течение 14 дней только товара, сохранившего
+              свой товарный вид, который был в наличии. На изделия, выполненные по индивидуальным заказам правила возврата не относятся.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

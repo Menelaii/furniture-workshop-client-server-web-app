@@ -5,6 +5,8 @@
       <p class="review-template__reviewer-name">{{review.reviewer}}</p>
       <div class="review-template__stars">
         <img *ngFor="let i of utils.createRange(review.stars)" src="assets/icons/star.svg" class="star">
+        <img *ngIf="isAuthenticated" (click)="onRemoveBtnClick()"
+             class="remove-button" src="assets/icons/remove.svg" alt="remove.svg">
       </div>
     </div>
   </div>

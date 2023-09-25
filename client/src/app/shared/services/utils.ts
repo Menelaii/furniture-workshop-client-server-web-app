@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {FurnitureRich} from "../interfaces/furnitureRich";
+import {FurnitureRich} from "../interfaces/furniture-rich";
 
 @Injectable()
 export class Utils {
@@ -24,10 +24,12 @@ export class Utils {
       height: 50,
       diameter: 0,
       furnitureType: {id: 1, name: ""},
-      images: [
-        {
-          link: "https://drive.google.com/uc?export=view&id=1xbSbrtD01j_jz97XQiGuiX_3zaZ9FJSi",
-          isThumbnail: true
-        }]}
+      thumbnail: {
+        id: 0,
+        link: "https://drive.google.com/uc?export=view&id=1xbSbrtD01j_jz97XQiGuiX_3zaZ9FJSi",
+        isThumbnail: true
+      },
+      images: []
+    }
   }
 }

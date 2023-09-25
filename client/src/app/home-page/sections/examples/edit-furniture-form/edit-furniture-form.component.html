@@ -1,0 +1,94 @@
+<div class="modal fade"
+     id="editFurnitureModal" tabindex="-1" aria-labelledby="editFurnitureModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle"> Редактировать мебель</h5>
+
+        <div *ngIf="submitting" class="modal-header__spinner-container">
+          <div class="spinner-border modal-header__spinner-border" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+          </div>
+        </div>
+
+        <p *ngIf="message" class="modal-header__status-message"
+           [ngStyle]="{'color' : success ? 'green' : 'red'}"
+        >{{message}}</p>
+
+        <button type="button" class="btn-close" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="submit()" style="margin-top: 10px;">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title"
+                   placeholder="Стол..." formControlName="title">
+            <label for="title">Название</label>
+          </div>
+
+          <div class="mb-10 w-94">
+            <label for="description">Описание</label>
+            <textarea class="form-control" id="description"
+                      formControlName="description"></textarea>
+          </div>
+
+          <div class="form-floating mb-10">
+            <input type="number" class="form-control" id="price"
+                   placeholder="0" formControlName="price">
+            <label for="price">Цена</label>
+          </div>
+
+          <div class="form-floating mb-10">
+            <input type="number" class="form-control" id="priority"
+                   placeholder="0" formControlName="priority">
+            <label for="priority">Приоритет</label>
+          </div>
+
+          <div class="form-floating mb-10">
+            <input type="number" class="form-control" id="length"
+                   placeholder="0" formControlName="length">
+            <label for="length">Длина</label>
+          </div>
+
+          <div class="form-floating mb-10">
+            <input type="number" class="form-control" id="width"
+                   placeholder="0" formControlName="width">
+            <label for="width">Ширина</label>
+          </div>
+
+          <div class="form-floating mb-10">
+            <input type="number" class="form-control" id="height"
+                   placeholder="0" formControlName="height">
+            <label for="height">Высота</label>
+          </div>
+
+          <div class="form-floating mb-10">
+            <input type="number" class="form-control" id="diameter"
+                   placeholder="0" formControlName="diameter">
+            <label for="diameter">Диаметр</label>
+          </div>
+
+          <select class="form-select mb-10 w-94" formControlName="form">
+            <option value="0">Форма</option>
+            <ng-container *ngFor="let form of forms">
+              <option [value]="form.internalName"
+                      [selected]="form.internalName == furniture.form">
+                {{form.name}}
+              </option>
+            </ng-container>
+          </select>
+
+          <select class="form-select mb-10 w-94" formControlName="furnitureType">
+            <option value="0" selected>Вид мебели</option>
+            <option *ngFor="let type of types" [value]="type.id">
+              {{type.name}}
+            </option>
+          </select>
+
+          <button type="submit" class="btn btn-primary"
+                  [disabled]="form.invalid || submitted">Редактировать</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

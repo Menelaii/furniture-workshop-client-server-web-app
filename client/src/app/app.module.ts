@@ -3,9 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { FurnitureTemplateComponent } from './shared/components/furniture-template/furniture-template.component';
 import {SharedModule} from "./shared/shared.module";
 import { ReviewsComponent } from './home-page/sections/reviews/reviews.component';
 import { HeaderComponent } from './home-page/sections/header/header.component';
@@ -27,17 +25,17 @@ import { ExamplesGridComponent } from './home-page/sections/examples/examples-gr
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { EditorModalComponent } from './home-page/sections/faq/editor-modal/editor-modal.component';
 import {AddReviewModalComponent} from "./home-page/sections/reviews/add-review-modal/add-review-modal.component";
-import { RemovableReviewTemplateComponent } from './home-page/sections/reviews/removable-review-template/removable-review-template.component';
 import {LoginPageComponent} from "./login-page/login-page.component";
 import { AddFurnitureFormComponent } from './home-page/sections/examples/add-furniture-form/add-furniture-form.component';
 import {AuthGuard} from "./shared/services/auth.guard";
+import { EditFurnitureFormComponent } from './home-page/sections/examples/edit-furniture-form/edit-furniture-form.component';
+import { AddImageFormComponent } from './home-page/sections/examples/add-image-form/add-image-form.component';
+import { EditImagesFormComponent } from './home-page/sections/examples/edit-images-form/edit-images-form.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        MainLayoutComponent,
         HomePageComponent,
-        FurnitureTemplateComponent,
         ReviewsComponent,
         HeaderComponent,
         FooterComponent,
@@ -59,9 +57,11 @@ import {AuthGuard} from "./shared/services/auth.guard";
         EditorModalComponent,
         AddReviewModalComponent,
         AddReviewModalComponent,
-        RemovableReviewTemplateComponent,
         LoginPageComponent,
-        AddFurnitureFormComponent
+        AddFurnitureFormComponent,
+        EditFurnitureFormComponent,
+        AddImageFormComponent,
+        EditImagesFormComponent
     ],
     imports: [
         BrowserModule,

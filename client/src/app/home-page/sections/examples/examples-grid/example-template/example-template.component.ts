@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FurnitureRich} from "../../../../../shared/interfaces/furnitureRich";
+import {FurnitureRich} from "../../../../../shared/interfaces/furniture-rich";
 import {Utils} from "../../../../../shared/services/utils";
 
 @Component({
@@ -15,7 +15,6 @@ export class ExampleTemplateComponent {
   }
 
   onContainerClick() {
-    //data-bs-toggle="modal" data-bs-target="#exampleModal" todo delete
     this.onClick.emit(this.furniture)
   }
 }

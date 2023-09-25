@@ -1,7 +1,9 @@
 package com.shikkeram.server.utils;
 
+import com.shikkeram.server.dto.FurnitureDTO;
 import com.shikkeram.server.dto.FurnitureRichDTO;
 import com.shikkeram.server.dto.FurnitureUploadDTO;
+import com.shikkeram.server.dto.ImageDTO;
 import com.shikkeram.server.models.Furniture;
 import com.shikkeram.server.models.Image;
 import org.modelmapper.ModelMapper;
@@ -26,6 +28,23 @@ public class FurnitureMapper {
     }
 
     public FurnitureRichDTO entityToRichDTO(Furniture furniture) {
-        return mapper.map(furniture, FurnitureRichDTO.class);
+        FurnitureRichDTO furnitureRichDTO = mapper.map(furniture, FurnitureRichDTO.class);
+
+        Image thumbnail = furniture.getImages()
+                .stream()
+                .filter(Image::isThumbnail)
+                .findFirst().orElse(null);
+
+        ImageDTO thumbnailDTO = thumbnail != null
+                ? mapper.map(thumbnail, ImageDTO.class)
+                : null;
+
+        furnitureRichDTO.setThumbnail(thumbnailDTO);
+
+        return furnitureRichDTO;
+    }
+
+    public Furniture dtoToEntity(FurnitureDTO furnitureDTO) {
+        return mapper.map(furnitureDTO, Furniture.class);
     }
 }

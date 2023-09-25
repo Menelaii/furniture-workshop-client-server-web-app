@@ -20,19 +20,24 @@ $color-orange: #BF6F41
   margin: 0 auto 80px
   display: block
 
+.accordion
+  font-size: 16px
+
 .accordion-button
   font-family: 'Roboto Medium', monospace
   font-size: 22px
   color: $color-dark-two
   background-color: #F2F2F2
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+  padding: 1em 1.25em
 
 .accordion-header
-  margin-bottom: 4px
+  margin-bottom: 0.25em
 
 .accordion-body
-  font-size: 18px
-  padding: 1.5rem 1rem 2rem
+  font-size: calc(1em + 1px)
+  padding-left: 1em
+  padding-right: 1em
   color: $color-dark-one
   background-color: #F6F5FA
   a
@@ -40,18 +45,16 @@ $color-orange: #BF6F41
     color: $color-dark-one
   h3
     font-family: 'Roboto Medium', monospace
-    font-size: 20px
-    //line-height: 28px
+    font-size: calc(1em + 2px)
     margin-bottom: 0
     color: $color-dark-one
   p
     font-family: 'Roboto Light', monospace
-    //line-height: 28px
     color: $color-dark-one
   ul
-    padding-left: 15px
+    padding-left: 0.5em //0.9375em
     ul
-      padding-left: 10px
+      padding-left: 0.625em
 
 
 ul
@@ -64,15 +67,15 @@ ul
       display: inline
 
 .mb-11
-  margin-bottom: 11px
+  margin-bottom: 0.6875em
 .mb-30
-  margin-bottom: 30px
+  margin-bottom: 1.875em
 .mb-42
-  margin-bottom: 42px
+  margin-bottom: 2.625em
 .mb-20
-  margin-bottom: 20px
+  margin-bottom: 1.25em
 .pt-4px
-  padding-top: 4px
+  padding-top: 0.25em
 .light
   font-family: 'Roboto Light', monospace
 .no-marker
@@ -80,7 +83,7 @@ ul
 .furniture-links
   font-family: 'Roboto Regular', monospace
   ul
-    padding-left: 15px
+    padding-left: 0.5em //0.9375em
   li
     margin-bottom: 0
 
@@ -95,34 +98,24 @@ ul
 
 .no-ul-style
   list-style: none
-  margin-left: 20px
+  margin-left: 1.25em
 
 @media(max-width: 640px)
-  .section
-    margin-bottom: 42px
-  .accordion-body
+  .accordion
     font-size: 13px
-    h3
-      font-size: 15px
   .accordion-button
     font-size: 16px
 @media(max-width: 497px)
-  .accordion-body
+  .accordion
     font-size: 13px
-    h3
-      font-size: 14px
   .accordion-button
     font-size: 14px
 @media(max-width: 443px)
-  .accordion-body
-    padding: 0.5rem 0.4rem 0.2rem
+  .accordion
     font-size: 12px
-    h3
-      font-size: 12px
-    ul
-      padding-left: 4px
   .accordion-button
     font-size: 12px
-    padding: 0.3rem 1.25rem
-  .about-price
-    font-size: 10px
+@media(max-width: 404px)
+  .accordion-body
+    h3
+      font-size: calc(1em + 1px)

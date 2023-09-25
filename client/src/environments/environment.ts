@@ -3,5 +3,6 @@ export const environment = {
   rootURL: 'http://localhost:8080/api',
   promoPricesURL: 'http://localhost:8080/api/promo-prices',
   furnitureURL: 'http://localhost:8080/api/furniture',
-  reviewsURL: 'http://localhost:8080/api/reviews'
+  reviewsURL: 'http://localhost:8080/api/reviews',
+  imagesUrl: 'http://localhost:8080/api/images'
 }

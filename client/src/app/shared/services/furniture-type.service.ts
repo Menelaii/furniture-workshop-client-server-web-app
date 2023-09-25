@@ -11,7 +11,8 @@ export class FurnitureTypeService {
     {id:4, name: 'Тумбы'},
     {id:5, name: 'Прикроватные столики'},
     {id:6, name: 'Журнальные столики'},
-    {id:7, name: 'Консоли'}
+    {id:7, name: 'Консоли'},
+    {id:8, name: 'Подстолья'}
   ]
 
   getTypes(): FurnitureType[] {

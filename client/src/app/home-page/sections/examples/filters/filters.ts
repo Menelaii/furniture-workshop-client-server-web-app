@@ -19,9 +19,9 @@ export class Filters {
 
   onChanged: Subject<FiltersWithTimeout> = new Subject<FiltersWithTimeout>()
 
-  constructor() {
+  constructor(forms: Set<string>) {
     this._furnitureTypeId = 0
-    this._forms = new Set<string>(['Круглая', 'Прямоугольная', 'Овальная'])//todo get from service
+    this._forms = forms
     this._priceMax = undefined
     this._priceMin= undefined
     this._lengthMin= undefined

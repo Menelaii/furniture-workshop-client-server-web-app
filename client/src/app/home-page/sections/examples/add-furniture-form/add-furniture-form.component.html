@@ -4,10 +4,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle"> Добавить мебель</h5>
+
+        <div *ngIf="submitting" class="modal-header__spinner-container">
+          <div class="spinner-border modal-header__spinner-border" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+          </div>
+        </div>
+
+        <p *ngIf="message" class="modal-header__status-message"
+           [ngStyle]="{'color' : success ? 'green' : 'red'}"
+        >{{message}}</p>
+
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
+
       <div class="modal-body">
-        <form [formGroup]="form" (ngSubmit)="submit()">
+        <form [formGroup]="form" (ngSubmit)="submit()" style="margin-top: 10px;">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="title"
                    placeholder="Стол..." formControlName="title">
@@ -16,7 +28,7 @@
 
           <div class="mb-10 w-94">
             <label for="description">Описание</label>
-            <textarea class="form-control shadow" id="description"
+            <textarea class="form-control" id="description"
                       formControlName="description"></textarea>
           </div>
 
@@ -71,12 +83,20 @@
           </select>
 
           <div class="mb-10">
-            <label>Картинки
-              <input type="file" class="form-control"
-                     (change)="handleFileInput($event.target)" multiple>
+            <label>Превью
+              <input #visibleThumbnailFileInput type="file" class="form-control"
+                     (change)="handlePreviewInput($event.target)">
             </label>
           </div>
 
+          <div class="mb-10">
+            <label>Картинки
+              <input #visibleFileInput type="file" class="form-control"
+                     (change)="handleImagesInput($event.target)" multiple>
+            </label>
+          </div>
+
+          <input type="hidden" formControlName="previewFile">
           <input type="hidden" formControlName="imageFiles">
 
           <button type="submit" class="btn btn-primary"

@@ -8,5 +8,6 @@ import java.util.List;
 @Getter
 @Setter
 public class FurnitureRichDTO extends FurnitureDTO {
+    private ImageDTO thumbnail;
     private List<ImageDTO> images;
 }

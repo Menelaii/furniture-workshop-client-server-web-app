@@ -30,7 +30,7 @@ public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
     private final JWTFilter jwtFilter;
 
-    @Value("${clientDomain}")
+    @Value("${clientURL}")
     private String clientDomain;
 
     @Bean

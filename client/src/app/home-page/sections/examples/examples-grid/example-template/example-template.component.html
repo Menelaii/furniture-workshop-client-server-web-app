@@ -1,17 +1,22 @@
 <div (click)="onContainerClick()" class="furniture-template" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  <img class="furniture-template__img" src="{{furniture.images[0].link}}" alt="thumbnail">
+  <img class="furniture-template__img"
+       [src]="furniture.thumbnail ? furniture.thumbnail.link : 'assets/images/no-preview.svg'"
+       alt="thumbnail">
   <div class="furniture-template__content">
     <h4 class="furniture-template__header">{{furniture.title}}</h4>
     <div class="furniture-template__line"></div>
-    <!--      todo get from service-->
-    <ng-container *ngIf="furniture.form == 'Прямоугольная'">
-      <p class="furniture-template__size-line">Длина: {{furniture.length}} см</p>
-      <p class="furniture-template__size-line">Ширина: {{furniture.width}} см</p>
-    </ng-container>
-    <ng-container *ngIf="furniture.form == 'Круглая'">
+
+    <ng-container *ngIf="furniture.form == 'Круглая'; else notRoundSizes">
       <p class="furniture-template__size-line">Диаметр: {{furniture.diameter}} см</p>
     </ng-container>
+
+    <ng-template #notRoundSizes>
+      <p class="furniture-template__size-line">Длина: {{furniture.length}} см</p>
+      <p class="furniture-template__size-line">Ширина: {{furniture.width}} см</p>
+    </ng-template>
+
     <p class="furniture-template__size-line mb-13">Высота: {{furniture.height}} см</p>
+
     <div class="furniture-template__line"></div>
     <p class="furniture-template__price">{{furniture.price | thousands}} ₽</p>
   </div>

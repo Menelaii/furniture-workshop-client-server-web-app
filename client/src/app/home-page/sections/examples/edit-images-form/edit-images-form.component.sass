@@ -1,0 +1,38 @@
+@import "../../../../login-page/login-page.component"
+
+.form-floating
+  width: 100%
+.w-94
+  width: 100%
+
+.modal-header
+  &__spinner-container
+    font-size: 10px
+    margin-left: 10px
+  &__spinner-border
+    width: 2em
+    height: 2em
+.mb-20
+  margin-bottom: 30px
+
+.modal-dialog
+  margin: 0 auto
+  min-width: 59.5625em
+.modal-content
+  min-height: 37.5em
+
+.edit-images-form
+  &__images-grid
+    display: grid
+    grid-gap: 20px
+    grid-template-columns: repeat(3, 1fr)
+    img
+      width: 100%
+      object-fit: contain
+      cursor: pointer
+      &:hover
+        border: 2px solid yellow
+  &__radio-container
+    margin: 0 auto
+    width: 30%
+

@@ -12,7 +12,6 @@
   max-width: 945px
   margin: 0 auto 100px
   &__text
-    text-align: justify
     font-family: 'PT Serif Regular', serif
     font-size: 20px
     color: $color-dark-one
@@ -21,7 +20,10 @@
   &__h1
     margin-left: auto
     margin-right: auto
-    margin-bottom: 0.4em
+    margin-bottom: 0.66em
+    font-family: 'Roboto Bold', monospace
+    font-size: 28px
+    color: $color-orange
   &__contacts
     display: flex
     flex-direction: row
@@ -59,6 +61,13 @@
     align-items: center
     text-decoration-line: underline
     color: $color-dark-one
+
+ul
+  padding-left: 1em
+  list-style: disc inside
+  p
+    display: inline
+
 @media(max-width: 1284px)
   .about
     &__contact-type-icon
@@ -99,8 +108,8 @@
     &__h1
       font-size: 14px
     &__text
-      font-size: 10px
+      font-size: 12px
     &__contact-type-icon
       width: 25px
     &__contacts
-      font-size: 8.9px
+      font-size: 10px

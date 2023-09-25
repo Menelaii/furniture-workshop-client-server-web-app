@@ -1,12 +1,11 @@
 package com.shikkeram.server.controllers;
 
-import com.shikkeram.server.dto.FurniturePageDTO;
-import com.shikkeram.server.dto.FurnitureRichDTO;
-import com.shikkeram.server.dto.FurnitureUploadDTO;
+import com.shikkeram.server.dto.*;
 import com.shikkeram.server.models.Furniture;
 import com.shikkeram.server.searchCriterias.FurniturePage;
 import com.shikkeram.server.searchCriterias.FurnitureSearchCriteria;
 import com.shikkeram.server.services.FurnitureService;
+import com.shikkeram.server.services.ImageService;
 import com.shikkeram.server.utils.FurnitureMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FurnitureController {
     private final FurnitureService service;
+    private final ImageService imageService;
     private final FurnitureMapper furnitureMapper;
 
     @GetMapping
@@ -41,17 +41,21 @@ public class FurnitureController {
     }
 
     @PostMapping(consumes = { "multipart/form-data" })
-    public ResponseEntity<Void> create(@RequestPart("images") List<MultipartFile> files,
+    public ResponseEntity<Void> create(@RequestPart("preview") MultipartFile preview,
+                                       @RequestPart("images") List<MultipartFile> images,
                                        @RequestPart("furniture") FurnitureUploadDTO uploadDTO) {
 
-        System.out.println("enter");
-        System.out.println("size "+ files.size());
-        System.out.println("dto "+ uploadDTO.getTitle());
-
         Furniture furniture = furnitureMapper.uploadDTOToEntity(uploadDTO);
-        service.save(furniture, files);
+        service.save(furniture, preview, images);
 
         return new ResponseEntity<>(null, HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> update(@PathVariable("id") Integer id,
+                                       @RequestBody FurnitureDTO furnitureDTO) {
+        service.update(id, furnitureMapper.dtoToEntity(furnitureDTO));
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
@@ -60,12 +64,22 @@ public class FurnitureController {
         return ResponseEntity.ok().build();
     }
 
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<Void> update(@PathVariable("id") Integer id,
-//                                             @RequestBody FurnitureRichDTO furnitureRichDTO) {
-//
-//        service.update(id, furnitureMapper.richDTOToEntity(furnitureRichDTO));
-//
-//        return ResponseEntity.ok().build();
-//    }
+    @PatchMapping("/{id}/preview")
+    public ResponseEntity<Void> updatePreview(@PathVariable("id") Integer id,
+                                              @RequestBody UpdatePreviewDTO updatePreviewDTO) {
+        imageService.changePreview(id, updatePreviewDTO.getNewPreviewId());
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value = "/{id}/images", consumes = "multipart/form-data")
+    public ResponseEntity<Void> addImage(@PathVariable("id") Integer id,
+                                         @RequestParam("isThumbnail") boolean isThumbnail,
+                                         @RequestPart("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        imageService.addImage(id, isThumbnail, file);
+        return ResponseEntity.ok().build();
+    }
 }

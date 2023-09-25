@@ -1,4 +1,4 @@
-import {FurnitureRich} from "./furnitureRich";
+import {FurnitureRich} from "./furniture-rich";
 
 export interface FurniturePage {
   furniture: FurnitureRich[]

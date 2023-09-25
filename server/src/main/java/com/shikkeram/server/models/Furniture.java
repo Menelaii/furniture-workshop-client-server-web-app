@@ -32,6 +32,8 @@ public class Furniture extends AbstractEntity {
     )
     private List<Image> images;
 
+
+
     public void removeImagesIfExists() {
         if (images != null) {
             images.forEach(i -> i.setFurniture(null));

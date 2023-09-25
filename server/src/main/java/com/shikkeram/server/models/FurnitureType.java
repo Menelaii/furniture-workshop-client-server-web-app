@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -20,13 +19,4 @@ public class FurnitureType extends AbstractEntity {
     private String name;
     @OneToMany(mappedBy = "furnitureType", cascade = CascadeType.PERSIST)
     private List<Furniture> furniture;
-
-    public void addFurniture(Furniture furniture) {
-        if (this.furniture != null) {
-            this.furniture.add(furniture);
-            return;
-        }
-
-        this.furniture = Collections.singletonList(furniture);
-    }
 }

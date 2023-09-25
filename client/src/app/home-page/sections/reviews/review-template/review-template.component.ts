@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Review} from "../../../../shared/interfaces/review";
 import {Utils} from "../../../../shared/services/utils";
 
@@ -9,6 +9,8 @@ import {Utils} from "../../../../shared/services/utils";
 })
 export class ReviewTemplateComponent implements OnInit {
   @Input() review: Review = {reviewer: '', text: '', stars: 0, id: 0}
+  @Input() isAuthenticated = false
+  @Output() onRemoveButtonClick = new EventEmitter<number>()
   id:number = 0
   dotsId:string = ''
   moreTextId:string = ''
@@ -53,6 +55,10 @@ export class ReviewTemplateComponent implements OnInit {
       readMore.innerHTML = "Свернуть";
       moreText.style.display = "inline";
     }
+  }
+
+  onRemoveBtnClick() {
+    this.onRemoveButtonClick.emit(this.id)
   }
 
   private initializeWithShortText() {

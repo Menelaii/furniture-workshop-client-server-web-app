@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
 import {FurnitureType} from "../../../../shared/interfaces/furniture-type";
 import {FurnitureForm} from "../../../../shared/interfaces/furniture-form";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {FurnitureTypeService} from "../../../../shared/services/furniture-type.service";
 import {FurnitureFormService} from "../../../../shared/services/furniture-form.service";
 import {FurnitureService} from "../../../../shared/services/furniture.service";
@@ -13,11 +13,16 @@ import {Furniture} from "../../../../shared/interfaces/furniture";
   styleUrls: ['./add-furniture-form.component.sass']
 })
 export class AddFurnitureFormComponent {
+  @ViewChild('visibleFileInput') visibleFileInput!: ElementRef<HTMLInputElement>
+  @ViewChild('visibleThumbnailFileInput') visibleThumbnailFileInput!: ElementRef<HTMLInputElement>
   @Output() onSubmitted = new EventEmitter()
   types: FurnitureType[]
   forms: FurnitureForm[]
   form: FormGroup;
   submitted = false
+  submitting = false
+  message = ''
+  success = false
 
   constructor(private furnitureTypeService: FurnitureTypeService,
               private furnitureFormService: FurnitureFormService,
@@ -47,17 +52,27 @@ export class AddFurnitureFormComponent {
         Validators.required]),
       furnitureType: new FormControl(0, [
         Validators.required, Validators.min(1)]),
+      previewFile: new FormControl(null, Validators.required),
       imageFiles: new FormControl(null, Validators.required)
     })
   }
 
-  handleFileInput(eventTarget: EventTarget | null) {
+  handleImagesInput(eventTarget: EventTarget | null) {
+    this.handleFileInput(eventTarget, this.form.controls['imageFiles'])
+  }
+
+  handlePreviewInput(eventTarget: EventTarget | null) {
+    this.handleFileInput(eventTarget, this.form.controls['previewFile'])
+  }
+
+  handleFileInput(eventTarget: EventTarget | null,
+                  targetControl: AbstractControl<any>) {
     if (eventTarget == null) {
       return
     }
 
     let files: FileList | null = (eventTarget as HTMLInputElement).files
-    this.form.controls['imageFiles'].setValue(files ? files :  '')
+    targetControl.setValue(files ? files :  '')
   }
 
   submit() {
@@ -66,17 +81,21 @@ export class AddFurnitureFormComponent {
     }
 
     this.submitted = true
+    this.submitting = true
 
     const furniture: Furniture = {...this.form.value}
 
     furniture.furnitureType = {id: this.form.value.furnitureType}
 
-    let formData = new FormData()
+    const formData = new FormData()
 
 
     formData.append('furniture', new Blob([JSON.stringify(furniture)], {
       type: 'application/json',
     }))
+
+    formData.append("preview", this.form.value.previewFile[0],
+      this.form.value.previewFile[0].name)
 
     Array.prototype.forEach.call(this.form.value.imageFiles, file => {
       formData.append("images", file, file.name)
@@ -90,6 +109,7 @@ export class AddFurnitureFormComponent {
       },
       error(value: any) {
         this.parentEl.resetForm()
+        this.parentEl.onSubmitError()
       }
     }
 
@@ -99,14 +119,31 @@ export class AddFurnitureFormComponent {
   onSuccessfullySubmitted() {
     this.resetForm()
     this.onSubmitted.emit()
+    this.message = 'мебель успешно добавлена'
+    this.success = true
+  }
+
+  onSubmitError() {
+    this.resetForm()
+    this.message = 'ошибка'
+    this.success = false
   }
 
   resetForm() {
     this.submitted = false
+    this.submitting = false
     this.form.reset()
+    this.visibleFileInput.nativeElement.value = ''
+    this.visibleThumbnailFileInput.nativeElement.value = ''
+
     this.form.patchValue({
       furnitureType: 0,
       form: 0
     })
+  }
+
+  resetMessage() {
+    this.message = ''
+    this.success = false
   }
 }

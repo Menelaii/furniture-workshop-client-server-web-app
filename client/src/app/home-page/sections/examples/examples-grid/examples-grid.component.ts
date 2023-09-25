@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FurnitureRich} from "../../../../shared/interfaces/furnitureRich";
+import {FurnitureRich} from "../../../../shared/interfaces/furniture-rich";
+import {Furniture} from "../../../../shared/interfaces/furniture";
 
 @Component({
   selector: 'app-examples-grid',
