@@ -9,3 +9,6 @@ tokenExpiresIn=
 secret=
 clientURL=${CLIENT_URL}
 backendURL=${BACKEND_URL}
+file.storage.directory=
+file.compression-quality=
+
